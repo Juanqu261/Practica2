@@ -10,8 +10,8 @@ def leerJSON(nombre_del_archivo: str) -> dict:
     [Returns]:
         diccionario (dict): Diccionario con los datos del json
     """
-    with open(nombre_del_archivo, "r"):
-        diccionario = json.load(nombre_del_archivo)
+    with open(nombre_del_archivo, "r") as file:
+        diccionario = json.load(file)
     return diccionario
 
 
