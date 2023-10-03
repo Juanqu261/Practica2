@@ -21,5 +21,8 @@ class Usuario:
         self.contrasena = contrasena
         self.cargo = cargo
 
+    def get_cedula(self):
+        return self.cedula
+
     def __str__(self):
         return f"Carlos {self.celular} {self.email}"
