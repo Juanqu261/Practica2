@@ -2,6 +2,19 @@ from estructuras import DoubleList
 
 
 def middle(d_list, start, end):
+    """
+    [Summary]:
+        Devuelve el nodo medio de una lista doblemente enlazada dada su nodo de inicio y finalización.
+
+    [Args]:
+    d_list(DoubleList): lista doblemdente enlazada.
+    start(DoubleNode): el nodo de inicio de la sublista a considerar.
+    end(DoubleNode): el nodo final de la sublista a considerar.
+
+    [Returns]:
+    - El nodo que buscado o None si no existe lo que se busca
+    """
+
     if start == None or end == None:
         return None
     if start == end:
