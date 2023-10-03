@@ -8,7 +8,7 @@
 # Parte 2: Implementación de Pilas y Colas usando la Lista Simple
 
 - [x] Clase Stack
-- [x] Clase Queue
+- [ ] Clase Queue
 
 # Parte 3: Implementación sistema de mensajería empleando listas, pilas y colas
 
