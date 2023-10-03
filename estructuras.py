@@ -32,12 +32,12 @@ class List:
         return self.size
 
     def is_empty(self):
-        return (self.size == 0)
+        return self.size == 0
 
     def add_first(self, e):
         node = Node(e)
 
-        if (self.is_empty()):
+        if self.is_empty():
             self.head = node
             self.tail = node
         else:
@@ -49,7 +49,7 @@ class List:
     def add_last(self, e):
         node = Node(e)
 
-        if (self.is_empty()):
+        if self.is_empty():
             self.head = node
             self.tail = node
         else:
@@ -59,7 +59,7 @@ class List:
         self.size += 1
 
     def remove_first(self):
-        if (self.is_empty()):
+        if self.is_empty():
             return None
 
         temp = self.head
@@ -70,12 +70,12 @@ class List:
         return temp.get_data()
 
     def remove_last(self):
-        if (self.size == 1):
+        if self.size == 1:
             self.remove_first()
         else:
             temp = self.tail
             prev = self.head
-            while (prev.get_next() != self.tail):
+            while prev.get_next() != self.tail:
                 prev = prev.get_next()
             prev.set_next(None)
             self.tail = prev
@@ -87,7 +87,7 @@ class List:
     def as_pylist(self):
         new_list = []
         temp = self.get_first()
-        while (temp != None):
+        while temp != None:
             new_list.append(temp.get_data())
             temp = temp.get_next()
         return new_list
@@ -128,7 +128,7 @@ class DoubleList:
         return self.size
 
     def is_empty(self):
-        return (self.size == 0)
+        return self.size == 0
 
     def get_first(self):
         return self.head
@@ -138,7 +138,7 @@ class DoubleList:
 
     def add_first(self, data):
         new_head = DoubleNode(data)
-        if (self.is_empty()):
+        if self.is_empty():
             self.head = new_head
             self.tail = new_head
         else:
@@ -150,7 +150,7 @@ class DoubleList:
 
     def add_last(self, data):
         new_tail = DoubleNode(data)
-        if (self.is_empty()):
+        if self.is_empty():
             self.head = new_tail
             self.tail = new_tail
         else:
@@ -161,7 +161,7 @@ class DoubleList:
         self.size += 1
 
     def remove_first(self):
-        if (self.is_empty()):
+        if self.is_empty():
             return None
         else:
             temp = self.head
@@ -172,7 +172,7 @@ class DoubleList:
         return temp.get_data()
 
     def remove_last(self):
-        if (self.is_empty()):
+        if self.is_empty():
             return None
         else:
             temp = self.tail
@@ -184,9 +184,9 @@ class DoubleList:
 
     def remove(self, node):
         """Se asume que la lista contiene a node."""
-        if (self.head == node):
+        if self.head == node:
             self.remove_first()
-        elif (self.tail == node):
+        elif self.tail == node:
             self.remove_last()
         else:
             prev = node.get_prev()
@@ -200,7 +200,7 @@ class DoubleList:
 
     def add_before(self, data, node):
         """Se asume que la lista contiene a node."""
-        if (self.head == node):
+        if self.head == node:
             self.add_first(data)
         else:
             new_node = DoubleNode(data)
@@ -213,7 +213,7 @@ class DoubleList:
 
     def add_after(self, data, node):
         """Se asume que la lista contiene a node."""
-        if (self.tail == node):
+        if self.tail == node:
             self.add_last(data)
         else:
             new_node = DoubleNode(data)
@@ -223,6 +223,15 @@ class DoubleList:
             new_node.set_next(next)
             next.set_prev(new_node)
             self.size += 1
+
+    # EXTRAS
+    def as_pylist(self):
+        new_list = []
+        temp = self.get_first()
+        while temp != None:
+            new_list.append(temp.get_data())
+            temp = temp.get_next()
+        return new_list
 
 
 class Stack:
@@ -245,6 +254,7 @@ class Stack:
         if self.is_empty():
             return None
         return self.data.get_first().get_data()
+
 
 # Realizar
 class Queue:

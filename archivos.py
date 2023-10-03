@@ -1,7 +1,9 @@
 import json
+from modelos import Usuario
+from estructuras import DoubleList
 
 
-def leerJSON(nombre_del_archivo: str) -> dict:
+def leer_json(nombre_del_archivo: str) -> dict:
     """
     [Summary]:
         Lee el json y lo retorna como un diccionario
@@ -15,7 +17,7 @@ def leerJSON(nombre_del_archivo: str) -> dict:
     return diccionario
 
 
-def guardarJSON(nombre_del_archivo: int, guardar: any) -> None:
+def guardar_json(nombre_del_archivo: int, guardar: any) -> None:
     """
     [Summary]:
         Guarda el diccionario en un archivo json
