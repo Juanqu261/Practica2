@@ -33,4 +33,18 @@
   - [ ] El empleado tiene las opciones de guardar como borrador, descartar o enviar el mensaje.
 - [ ] Al almacenar como borrador se guarda en una carpeta donde solo se puede acceder al ultimo borrador.
 - [ ] Al descartar un mensaje se elimina del sistema
-- [ ]
+- [ ] Al enviar un mensaje el sistema lo agrega a la bandeja de entrada del destinatario
+- [ ] Los mensajes en la bandeja de entrada, mensajes leidos y borradores de cada usuario se almacenan en archivos de text, denominados por el numero de cedula del empleado, seguido por las letras BA (bandeja de entrada), ML (mensajes leidos), B (borradores)
+
+# Test Sugeridos:
+1. Loggear como admin, crear y eliminar un usuario
+2. Ingresar como empleado y consultar la BA
+3. Crea un nuevo mensaje desde un empleado y guardarlo como B
+4. Consultar los B de un empleado
+5. Enviar un mensaje desde un B
+6. Crear un nuevo mensaje desde un empleado y descartarlo
+7. Crear un nuevo mensaje desde un empleado y enviarlo a otro usuario
+8. Consular la BA de un empleado
+9. Leer un mensaje
+10. Consultar ML de un empleado
+11. Revisar los archivos generados por el programa
