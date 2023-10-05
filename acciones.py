@@ -1,17 +1,18 @@
 from estructuras import DoubleList
 from modelos import Usuario
-
+from archivos import *
 
 def crear_usuarios(diccionario_datos: dict, credenciales: dict) -> DoubleList:
     """
     [Summary]:
-        Crea un usuario nuevo
+        Crea una lista de usuarios(objetos) existentes en el sistema
     [Args]:
-        diccionario (dict): Diccionario con los datos del usuario
+        diccionario (dict): Diccionario con los datos de los usuarios
+        credenciales (dict): Diccionario con las contraseñas y cargos de los usuarios
     [Returns]:
-        usuario (Usuario): Usuario creado
+        lista_usuarios_cargados (DoubleList): Usuarios creados
     """
-    lista_doble = DoubleList()
+    lista_usuarios_cargados = DoubleList()
     for id in diccionario_datos:
         datos = diccionario_datos[id]
         datos2 = credenciales[id]
@@ -26,6 +27,24 @@ def crear_usuarios(diccionario_datos: dict, credenciales: dict) -> DoubleList:
             contrasena=datos2["password"],
             cargo=datos2["cargo"],
         )
-        lista_doble.add_last(usuario)
+        lista_usuarios_cargados.add_last(usuario)
+        return lista_usuarios_cargados
 
-        return lista_doble
+def login(id: str, password: str, lista: DoubleList) -> bool:
+    """
+    [Summary]:
+        El usuario a ingresar existe en el sistema
+    [Args]:
+        id (str): id del usuario que desea acceder
+        password (str): Contraseña del usuario que desea acceder
+        lista (DoubleList): Lista Doble donde que almacena los usuarios existentes
+    [Returns]:
+        True : id y password se encuentran y coinciden con el usuario ubicado en lista
+        False : id o password no se encuentran o no coinciden con el usuario ubicado en lista
+    """
+    print(lista.get_size())
+
+
+# empleados, credenciales = leer_json("empleados.json"), leer_json("password.json")
+# lista_usuarios = crear_usuarios(empleados, credenciales)
+# login("134","weggq",lista_usuarios)

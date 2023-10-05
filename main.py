@@ -2,17 +2,15 @@ from estructuras import *
 from archivos import *
 from acciones import *
 
-
-def login(id: str, password: str, lista: DoubleList) -> bool:
-    pass
-
-
-# Lectura de registro
+# Lectura de registro --> Cargamos los archivos .json en formato de diccionarios
 empleados, credenciales = leer_json("empleados.json"), leer_json("password.json")
 
-lista = crear_usuarios(empleados, credenciales)
+# Crear objetos usuario --> Creamos objetos que contengan la informacion de los diccionarios
+#   Estos objetos quedaran agrupados en la siguiente lista
+lista_usuarios = crear_usuarios(empleados, credenciales)
 
-# Login
+# Login --> Para ingresar al sistema, los datos ingresados deben coincidir con los datos
+#   De algun objeto(usuario) existente dentro de lista_usuarios.
 print("Bienvenido al Sistema de Mensajería")
 print("Ingrese su cedula: ")
 cedula = input()
@@ -21,5 +19,5 @@ contrasena = input()
 login(
     id=cedula,
     password=contrasena,
-    lista=lista,
+    lista=lista_usuarios,
 )
