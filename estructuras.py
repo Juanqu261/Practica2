@@ -258,4 +258,26 @@ class Stack:
 
 # Realizar
 class Queue:
-    pass
+    def __init__(self):
+        self.data = List()
+
+    def get_size(self):
+        return self.data.get_size()
+    
+    def is_empty(self):
+        return self.data.is_empty()
+    
+    def enqueue(self, e):
+        self.data.addLast(e)
+
+    def dequeue(self):
+        if self.is_empty():
+            return None
+        else:
+            return self.data.remove_first()
+    
+    def first(self):
+        if self.is_empty():
+            return None
+        else:
+            return self.data.First().getData()
