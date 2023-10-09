@@ -28,7 +28,7 @@ def crear_usuarios(diccionario_datos: dict, credenciales: dict) -> DoubleList:
             cargo=datos2["cargo"],
         )
         lista_usuarios_cargados.add_last(usuario)
-        return lista_usuarios_cargados
+    return lista_usuarios_cargados
 
 def login(id: str, password: str, lista: DoubleList) -> bool:
     """
