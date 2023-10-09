@@ -42,7 +42,12 @@ def login(id: str, password: str, lista: DoubleList) -> bool:
         True : id y password se encuentran y coinciden con el usuario ubicado en lista
         False : id o password no se encuentran o no coinciden con el usuario ubicado en lista
     """
-    print(lista.get_size())
+    temp = lista.get_first()
+    for i in range(lista.get_size()):
+        if (temp.get_data().cedula == id):
+            print(f"Bienvenido, {temp.get_data().nombre}")
+            return True
+    return False
 
 
 # empleados, credenciales = leer_json("empleados.json"), leer_json("password.json")
