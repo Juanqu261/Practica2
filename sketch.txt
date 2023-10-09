@@ -1,0 +1,83 @@
+Bienvenido al sistema
+Ingresa cedula
+Ingresa contraseña
+Hola, xxx (cargo)!
+
+EMPLEADO:
+Posibles acciones:
+	enviar_mensaje()
+		[
+            Destinatario: #id
+            Asunto: #
+            Mensaje: #
+            enviar | guardar borrador | descartar
+        ]
+
+	ver_bandeja_entrada()
+        [
+            1   (fecha)
+                (asunto)
+                (remitente)
+            
+            2   ...
+            .
+            .
+            .
+            
+            >>> 5
+
+            # Mensaje
+
+            >>> "volver"
+
+            1   ...
+            2   ...
+
+            ...
+        ]
+
+    ver_leídos()
+        [
+            # Mensaje leído más antiguo
+
+            >>> ver Siguiente
+        ]
+    ver_borradores()
+        [
+            # Mensaje borrador más reciente
+
+            Opciones: "enviar" | "descartar" | "salir"
+            
+            # Siguiente borrador
+
+            ...
+        ]
+	
+
+ADMIN:
+Posibles acciones:
+	(EMPLEADO)
+    +
+    agregar_usuario()
+        [
+            Ingresar Nombre:
+            Ingresar Cédula:
+            ...
+
+            Usuario añadido con éxito.
+        ]
+
+    cambiar_contraseña()
+        [
+            Especificar id:
+            Establecer contraseña:
+
+            Contraseña actualizada.
+        ]
+
+    eliminar()
+        [
+            Especificar id:
+
+            # Datos del usuario eliminado
+        ]

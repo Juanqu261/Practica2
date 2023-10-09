@@ -23,4 +23,7 @@ user = login(lista_usuarios).get_data()
 if (user == None):
     quit()
 
-print(user)
+# if (user.get_cargo() == "Empleado"):
+#     # 
+# else:
+#     # 
