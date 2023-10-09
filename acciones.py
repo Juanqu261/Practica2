@@ -30,7 +30,8 @@ def crear_usuarios(diccionario_datos: dict, credenciales: dict) -> DoubleList:
         lista_usuarios_cargados.add_last(usuario)
     return lista_usuarios_cargados
 
-def login(id: str, password: str, lista: DoubleList) -> bool:
+
+def login(lista: DoubleList) -> bool:
     """
     [Summary]:
         El usuario a ingresar existe en el sistema
@@ -42,14 +43,30 @@ def login(id: str, password: str, lista: DoubleList) -> bool:
         True : id y password se encuentran y coinciden con el usuario ubicado en lista
         False : id o password no se encuentran o no coinciden con el usuario ubicado en lista
     """
-    temp = lista.get_first()
-    for i in range(lista.get_size()):
-        if (temp.get_data().cedula == id):
-            print(f"Bienvenido, {temp.get_data().nombre}")
-            return True
-    return False
+    logged_in = False
+    id = 0
+    while (not logged_in):
+        print("\nIngrese su Cédula:")
+        id = input()
+        if (id == "x"):
+            return None
+        print("\nIngrese su Contraseña:")
+        password = input()
+        if (password == "x"):
+            return None
 
+        temp = lista.get_first()
+        for i in range(lista.get_size()):
+            if (temp.get_data().cedula == id):
+                if (temp.get_data().get_contrasena() == password):
+                    cargo = temp.get_data().get_cargo()
+                    print(f"\nBienvenido, {temp.get_data().nombre} ({cargo})")
+                    logged_in = True
+                    return temp
+                else:
+                    print("\nContraseña incorrecta")
+                    logged_in = False
+            temp = temp.get_next()
+        print("\nEl Usuario no existe.")
+        logged_in = False
 
-# empleados, credenciales = leer_json("empleados.json"), leer_json("password.json")
-# lista_usuarios = crear_usuarios(empleados, credenciales)
-# login("134","weggq",lista_usuarios)

@@ -76,4 +76,4 @@ class Usuario:
         self.cargo = e
 
     def __str__(self):
-        return f"Carlos {self.celular} {self.email}"
+        return f"{self.nombre} {self.contrasena} {self.cedula}"

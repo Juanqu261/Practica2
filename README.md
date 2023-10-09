@@ -8,12 +8,13 @@
 # Parte 2: Implementación de Pilas y Colas usando la Lista Simple
 
 - [x] Clase Stack
-- [ ] Clase Queue
+- [x] Clase Queue
 
 # Parte 3: Implementación sistema de mensajería empleando listas, pilas y colas
 
-- [ ] Leer y cargar 'empleados.txt'
-- [ ] Login
+- [x] Leer 'empleados.txt'
+- [ ] Cargar en 'empleados.txt'
+- [x] Login
 - [ ] Admin:
   - [ ] Agregar usuario
   - [ ] Cambiar contrasenas
