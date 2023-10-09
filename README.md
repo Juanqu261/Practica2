@@ -19,7 +19,7 @@
   - [ ] Agregar usuario
   - [ ] Cambiar contrasenas
   - [ ] Eliminar empleado
-  - [ ] Guardar cambios en el archivo
+  - [ ] Guardar cambios en el archivo (al final)
 - [ ] Enviar mensaje
 - [ ] Recibir mensaje
 - [ ] Guardar cambios en el archivo

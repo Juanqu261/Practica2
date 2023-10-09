@@ -17,12 +17,10 @@ print("Bienvenido al Sistema de Mensajería")
 # cedula = input()
 # print("Ingrese su contrasena: ")
 # contrasena = input()
-user = login(
-    lista=lista_usuarios,
-)
+user = login(lista_usuarios).get_data()
 
 # Si se omite el login
 if (user == None):
     quit()
 
-
+print(user)
