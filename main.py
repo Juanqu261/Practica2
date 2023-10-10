@@ -19,11 +19,15 @@ user = login(lista_usuarios).get_data()
 if (user == None):
     quit()
 
+
 print("Acciones:\n\n\
     1 - Ver Bandeja\n\
-    2 - ...\n\n\
+    6 - Ver Bandeja\n\
+    x - ...\n\n\
 Indique el número de la acción que desea realizar:\n")
 
 match input():
     case "1":
         ver_bandeja()
+    case "6":        
+        cambiar_contrasena(lista_usuarios)

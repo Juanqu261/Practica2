@@ -80,3 +80,17 @@ Tienes 10 mensajes sin leer\n\n" + 50 * "-")
     {'%02d'%i}    Asunto {i}\n\
           Carlos Sanchez")
         print(50 * "-")
+
+def cambiar_contrasena(lista: DoubleList):
+    print("\n\nIndique la cedula del empleado: ")
+    cedula  = input()
+
+    temp = lista.get_first()
+    for i in range(lista.get_size()):
+        if (temp.get_data().cedula == cedula): 
+            print("\nIngrese nueva contrasena: ")
+            contrasena = input() 
+            temp.get_data().set_contrasena(contrasena) 
+            print("\nContraseña actualizada con exito.")
+            break
+        temp = temp.get_next()
