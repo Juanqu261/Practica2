@@ -60,13 +60,23 @@ def login(lista: DoubleList) -> bool:
             if (temp.get_data().cedula == id):
                 if (temp.get_data().get_contrasena() == password):
                     cargo = temp.get_data().get_cargo()
-                    print(f"\nBienvenido, {temp.get_data().nombre} ({cargo})")
+                    print(f"\nHola, {temp.get_data().nombre} ({cargo})")
                     logged_in = True
                     return temp
                 else:
-                    print("\nContraseña incorrecta")
+                    print("\nContraseña incorrecta. Por favor intentelo de nuevo.")
                     logged_in = False
             temp = temp.get_next()
-        print("\nEl Usuario no existe.")
+        print("\nEl Usuario no existe. Por favor intentelo de nuevo.")
         logged_in = False
 
+
+def ver_bandeja():
+    print("\n\n\
+Tienes 10 mensajes sin leer\n\n" + 50 * "-")
+
+    for i in range(1,11):
+        print(f"          {'%02d'%i}/{'%02d'%(12-i)}/2023\n\
+    {'%02d'%i}    Asunto {i}\n\
+          Carlos Sanchez")
+        print(50 * "-")
