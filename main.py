@@ -19,10 +19,10 @@ user = login(lista_usuarios).get_data()
 if (user == None):
     quit()
 
-
 print("Acciones:\n\n\
     1 - Ver Bandeja\n\
-    6 - Ver Bandeja\n\
+    6 - Cambiar contraseña de un empleado\n\
+    7 - Eliminar empleado\n\
     x - ...\n\n\
 Indique el número de la acción que desea realizar:\n")
 
@@ -31,3 +31,10 @@ match input():
         ver_bandeja()
     case "6":        
         cambiar_contrasena(lista_usuarios)
+    case "7":
+        eliminar_usuario(lista_usuarios)
+        
+# temp = lista_usuarios.get_first()
+# for i in range(lista_usuarios.get_size()):
+#     print(temp.get_data().__str__())
+#     temp = temp.get_next()

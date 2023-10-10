@@ -30,7 +30,6 @@ def crear_usuarios(diccionario_datos: dict, credenciales: dict) -> DoubleList:
         lista_usuarios_cargados.add_last(usuario)
     return lista_usuarios_cargados
 
-
 def login(lista: DoubleList) -> bool:
     """
     [Summary]:
@@ -70,7 +69,6 @@ def login(lista: DoubleList) -> bool:
         print("\nEl Usuario no existe. Por favor intentelo de nuevo.")
         logged_in = False
 
-
 def ver_bandeja():
     print("\n\n\
 Tienes 10 mensajes sin leer\n\n" + 50 * "-")
@@ -92,5 +90,20 @@ def cambiar_contrasena(lista: DoubleList):
             contrasena = input() 
             temp.get_data().set_contrasena(contrasena) 
             print("\nContraseña actualizada con exito.")
+            break
+        temp = temp.get_next()
+
+def eliminar_usuario(lista: DoubleList):
+    print("\n\nIndique la cedula del empleado: ")
+    cedula  = input()
+
+    temp = lista.get_first()
+    for i in range(lista.get_size()):
+        if (temp.get_data().cedula == cedula):
+            print('\nPara confirmar la eliminacion, digite "SI" :')
+            validacion = input()
+            if validacion == "SI":
+                lista.remove(temp)
+                print("\nUsuario eliminado con exito.")
             break
         temp = temp.get_next()
