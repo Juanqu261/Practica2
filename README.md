@@ -17,8 +17,8 @@
 - [x] Login
 - [ ] Admin:
   - [ ] Agregar usuario
-  - [ ] Cambiar contrasenas
-  - [ ] Eliminar empleado
+  - [x] Cambiar contrasenas
+  - [x] Eliminar empleado
   - [ ] Guardar cambios en el archivo (al final)
 - [ ] Enviar mensaje
 - [ ] Recibir mensaje
