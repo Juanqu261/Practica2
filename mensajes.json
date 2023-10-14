@@ -1,0 +1,31 @@
+{
+    "24567898": {
+        "BA" : {
+            "mensaje1":{
+                "remitente":"124525423",
+                "fecha":"dd/mm/aaaa",
+                "hora":"00:00",
+                "asunto":"------",
+                "mensaje":"-----------------------"
+            }
+        },
+        "ML":{
+            "mensaje1":{
+                "remitente":"124525423",
+                "fecha":"dd/mm/aaaa",
+                "hora":"00:00",
+                "asunto":"------",
+                "mensaje":"-----------------------"
+            }
+        },
+        "B":{
+            "mensaje1":{
+                "remitente":"124525423",
+                "fecha":"dd/mm/aaaa",
+                "hora":"00:00",
+                "asunto":"------",
+                "mensaje":"-----------------------"
+            }
+        }        
+    }
+}
