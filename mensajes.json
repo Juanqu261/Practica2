@@ -7,11 +7,18 @@
                 "hora":"00:00",
                 "asunto":"------",
                 "cuerpo":"-----------------------"
+            },
+            "mensaje2":{
+                "remitente":"2345902",
+                "fecha":"05/10/2321",
+                "hora":"01:00",
+                "asunto":"hola",
+                "cuerpo":"jajjaaj"
             }
         },
         "ML":{
             "mensaje1":{
-                "remitente":"124525423",
+                "remitente":"2345902",
                 "fecha":"dd/mm/aaaa",
                 "hora":"00:00",
                 "asunto":"------",
