@@ -1,19 +1,47 @@
 from estructuras import *
 from archivos import *
 from acciones import *
+from modelos import *
 
-# Lectura de registro --> Cargamos los archivos .json en formato de diccionarios
+# LECTURA DE ARCHIVOS
+
+# Registro --> Cargamos los archivos .json en formato de diccionarios
 empleados, credenciales = leer_json("empleados.json"), leer_json("password.json")
 
 # Crear objetos usuario --> Creamos objetos que contengan la informacion de los diccionarios
-#   Estos objetos quedaran agrupados en la siguiente lista
 lista_usuarios = crear_usuarios(empleados, credenciales)
+
+# Mensajes
+dict_mensajes = leer_json("mensajes.json")
+ba = DoubleList()
+for cedula in dict_mensajes:
+    for msg in dict_mensajes[cedula]["BA"]:
+        mensaje = dict_mensajes[cedula]["BA"][msg]
+        
+        # Búsqueda del nombre del remitente
+        remitente = ""
+        temp = lista_usuarios.get_first()
+        while (temp.get_next() != None):
+            if (temp.get_data().get_cedula() == mensaje["remitente"]):
+                remitente = temp.get_data().get_nombre()
+                break
+            temp = temp.get_next()
+        
+        mensaje = Mensaje(
+            remitente,
+            cedula,
+            mensaje["fecha"],
+            mensaje["hora"],
+            mensaje["asunto"],
+            mensaje["cuerpo"]
+        )
+        ba.add_last(mensaje)
 
 # Login --> Para ingresar al sistema, los datos ingresados deben coincidir con los datos
 #   De algun objeto(usuario) existente dentro de lista_usuarios.
 print("Bienvenido al Sistema de Mensajería")
 
-user = login(lista_usuarios).get_data()
+user = login(lista_usuarios)
 
 # Si se omite el login
 if (user == None):
@@ -28,7 +56,7 @@ Indique el número de la acción que desea realizar:\n")
 
 match input():
     case "1":
-        ver_bandeja()
+        ver_bandeja(user.get_cedula(), ba)
     case "6":        
         cambiar_contrasena(lista_usuarios)
     case "7":

@@ -77,3 +77,55 @@ class Usuario:
 
     def __str__(self):
         return f"{self.nombre} {self.contrasena} {self.cedula}"
+
+class Mensaje:
+    def __init__(self, remitente=None, destinatario=None, fecha=None, hora=None, asunto=None, cuerpo=None):
+        self.remitente = remitente
+        self.destinatario = destinatario
+        self.fecha = fecha
+        self.hora = hora
+        self.asunto = asunto
+        self.cuerpo = cuerpo
+    
+    def get_remitente(self):
+        return self.remitente
+    
+    def get_destinatario(self):
+        return self.destinatario
+
+    def get_fecha(self):
+        return self.fecha
+    
+    def get_hora(self):
+        return self.hora
+    
+    def get_asunto(self):
+        return self.asunto
+    
+    def get_cuerpo(self):
+        return self.cuerpo
+    
+    def set_remitente(self, remitente):
+        self.remitente = remitente
+
+    def set_destinatario(self, destinatario):
+        self.destinatario = destinatario
+    
+    def set_fecha(self, fecha):
+        self.fecha = fecha
+    
+    def set_hora(self, hora):
+        self.hora = hora
+    
+    def set_asunto(self, asunto):
+        self.asunto = asunto
+    
+    def set_cuerpo(self, cuerpo: str):
+        self.cuerpo = cuerpo
+
+    def __str__(self):
+        return f"    De: {self.remitente}\n\
+    Enviado a las {self.hora} del {self.fecha}\n\n\
+    Asunto: {self.asunto}\n\n\n\
+    \"{self.cuerpo}\""
+    

@@ -61,7 +61,7 @@ def login(lista: DoubleList) -> bool:
                     cargo = temp.get_data().get_cargo()
                     print(f"\nHola, {temp.get_data().nombre} ({cargo})")
                     logged_in = True
-                    return temp
+                    return temp.get_data()
                 else:
                     print("\nContraseña incorrecta. Por favor intentelo de nuevo.")
                     logged_in = False
@@ -69,15 +69,31 @@ def login(lista: DoubleList) -> bool:
         print("\nEl Usuario no existe. Por favor intentelo de nuevo.")
         logged_in = False
 
-def ver_bandeja():
-    print("\n\n\
-Tienes 10 mensajes sin leer\n\n" + 50 * "-")
+def ver_bandeja(id: str, ba: DoubleList()):
+    """Extrae de la Bandeja de Entrada Global los mensajes
+    dirigidos a un usuario específico.
+    
+    Incluye salida (prints) de la consola.
+    """
 
-    for i in range(1,11):
-        print(f"          {'%02d'%i}/{'%02d'%(12-i)}/2023\n\
-    {'%02d'%i}    Asunto {i}\n\
-          Carlos Sanchez")
-        print(50 * "-")
+    print("BANDEJA DE ENTRADA\n\n")
+    
+    # Obtención de la bandeja
+    temp = ba.get_first()
+    i = 1
+    while (temp != None):
+        if (temp.get_data().get_destinatario() == id):
+            mensaje = temp.get_data()
+            print(f"\
+          {mensaje.get_fecha()}\n\
+    {'%02d'%i}    Asunto: {mensaje.get_asunto()}\n\
+          {mensaje.get_remitente()}")
+            
+            print(50 * "-")
+        temp = temp.get_next()
+        i += 1    
+    if (i == 1):
+        print("No tienes mensajes nuevos para leer.")
 
 def cambiar_contrasena(lista: DoubleList):
     print("\n\nIndique la cedula del empleado: ")
