@@ -61,8 +61,3 @@ match input():
         cambiar_contrasena(lista_usuarios)
     case "7":
         eliminar_usuario(lista_usuarios)
-        
-# temp = lista_usuarios.get_first()
-# for i in range(lista_usuarios.get_size()):
-#     print(temp.get_data().__str__())
-#     temp = temp.get_next()
