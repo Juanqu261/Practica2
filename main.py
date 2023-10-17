@@ -12,7 +12,7 @@ dict_empleados = archivos.leer_json("empleados.json")
 dict_credenciales = archivos.leer_json("password.json")
 
 # Extraer la información de los diccionarios en una DoubleList
-lista_usuarios = archivos.cargar_usuarios(dict_empleados, dict_credenciales)
+lista_usuarios = acciones.cargar_usuarios(dict_empleados, dict_credenciales)
 
 # Obtener Mensajes
 dict_mensajes = archivos.leer_json("mensajes.json")
