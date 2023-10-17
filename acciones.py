@@ -1,8 +1,10 @@
 from estructuras import DoubleList
-from modelos import Usuario
+from modelos import Usuario, Mensaje
 from archivos import *
+from datetime import datetime
 
 
+# ------------------------------ Manejo de usuarios ------------------------------ #
 def crear_usuarios(diccionario_datos: dict, credenciales: dict) -> DoubleList:
     """
     [Summary]:
@@ -72,35 +74,6 @@ def login(lista: DoubleList) -> bool:
         logged_in = False
 
 
-def ver_bandeja(id: str, ba: DoubleList()):
-    """Extrae de la Bandeja de Entrada Global los mensajes
-    dirigidos a un usuario específico.
-
-    Incluye salida (prints) de la consola.
-    """
-
-    print("BANDEJA DE ENTRADA\n\n")
-
-    # Obtención de la bandeja
-    temp = ba.get_first()
-    i = 1
-    while temp != None:
-        if temp.get_data().get_destinatario() == id:
-            mensaje = temp.get_data()
-            print(
-                f"\
-          {mensaje.get_fecha()}\n\
-    {'%02d'%i}    Asunto: {mensaje.get_asunto()}\n\
-          {mensaje.get_remitente()}"
-            )
-
-            print(50 * "-")
-        temp = temp.get_next()
-        i += 1
-    if i == 1:
-        print("No tienes mensajes nuevos para leer.")
-
-
 def cambiar_contrasena(lista: DoubleList):
     print("\n\nIndique la cedula del empleado: ")
     cedula = input()
@@ -130,3 +103,72 @@ def eliminar_usuario(lista: DoubleList):
                 print("\nUsuario eliminado con exito.")
             break
         temp = temp.get_next()
+
+
+# ------------------------------ Manejo de mensajes ------------------------------ #
+
+
+def ver_bandeja(id: str, ba: DoubleList()):
+    """Extrae de la Bandeja de Entrada Global los mensajes
+    dirigidos a un usuario específico.
+
+    Incluye salida (prints) de la consola.
+    """
+
+    print("BANDEJA DE ENTRADA\n\n")
+
+    # Obtención de la bandeja
+    temp = ba.get_first()
+    i = 1
+    while temp != None:
+        if temp.get_data().get_destinatario() == id:
+            mensaje = temp.get_data()
+            print(
+                f"\
+          {mensaje.get_fecha()}\n\
+    {'%02d'%i}    Asunto: {mensaje.get_asunto()}\n\
+          {mensaje.get_remitente()}"
+            )
+
+            print(50 * "-")
+        temp = temp.get_next()
+        i += 1
+    if i == 1:
+        print("No tienes mensajes nuevos para leer.")
+
+
+def enviar_mensaje(remitente):
+    remitente = remitente
+    destinatario = input("Ingrese la cedula del destinatario:\n")
+    fecha = datetime.now().strftime("%Y/%m/%d")
+    hora = datetime.now().strftime("%Y/%m/%d")
+    asunto = input("Ingrese el asunto del mensaje:\n")
+    cuerpo = input("Ingrese el mensaje:\n")
+    mensaje = Mensaje(
+        remitente=remitente,
+        destinatario=destinatario,
+        fecha=fecha,
+        hora=hora,
+        asunto=asunto,
+        cuerpo=cuerpo,
+    )
+
+    opcion = input(
+        "Opciones:\n\
+            1. Guardar borrador\n\
+            2. Enviar mensaje\n\
+            3. Descartar"
+    )
+
+    while True:
+        if opcion == "1":
+            print("Borrador")
+            break
+        elif opcion == "2":
+            print("Enviar mensaje")
+            break
+        elif opcion == "3":
+            print("Mensaje descartado")
+            break
+        else:
+            print("Opcion invalida")

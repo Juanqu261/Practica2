@@ -23,28 +23,28 @@ class Usuario:
 
     def get_cedula(self):
         return self.cedula
-    
+
     def get_nombre(self):
         return self.nombre
-    
+
     def get_fecha_nacimiento(self):
         return self.fecha_nacimiento
-    
+
     def get_ciudad(self):
         return self.ciudad
-    
+
     def get_celular(self):
         return self.celular
-    
+
     def get_email(self):
         return self.email
-    
+
     def get_direccion(self):
         return self.direccion
-    
+
     def get_contrasena(self):
         return self.contrasena
-    
+
     def get_cargo(self):
         return self.cargo
 
@@ -61,7 +61,7 @@ class Usuario:
         self.ciudad = e
 
     def set_celular(self, e):
-        self.celular= e
+        self.celular = e
 
     def set_email(self, e):
         self.celular = e
@@ -78,54 +78,73 @@ class Usuario:
     def __str__(self):
         return f"{self.nombre} {self.contrasena} {self.cedula}"
 
+
 class Mensaje:
-    def __init__(self, remitente=None, destinatario=None, fecha=None, hora=None, asunto=None, cuerpo=None):
+    def __init__(
+        self,
+        remitente=None,
+        destinatario=None,
+        fecha=None,
+        hora=None,
+        asunto=None,
+        cuerpo=None,
+    ):
         self.remitente = remitente
         self.destinatario = destinatario
         self.fecha = fecha
         self.hora = hora
         self.asunto = asunto
         self.cuerpo = cuerpo
-    
+
     def get_remitente(self):
         return self.remitente
-    
+
     def get_destinatario(self):
         return self.destinatario
 
     def get_fecha(self):
         return self.fecha
-    
+
     def get_hora(self):
         return self.hora
-    
+
     def get_asunto(self):
         return self.asunto
-    
+
     def get_cuerpo(self):
         return self.cuerpo
-    
+
     def set_remitente(self, remitente):
         self.remitente = remitente
 
     def set_destinatario(self, destinatario):
         self.destinatario = destinatario
-    
+
     def set_fecha(self, fecha):
         self.fecha = fecha
-    
+
     def set_hora(self, hora):
         self.hora = hora
-    
+
     def set_asunto(self, asunto):
         self.asunto = asunto
-    
+
     def set_cuerpo(self, cuerpo: str):
         self.cuerpo = cuerpo
 
+    def __dict__(self):
+        return {
+            f"{self.remitente} {self.fecha} {self.hora}": {
+                "remitente": self.remitente,
+                "fecha": self.fecha,
+                "hora": self.hora,
+                "asunto": self.asunto,
+                "cuerpo": self.cuerpo,
+            }
+        }
+
     def __str__(self):
-        return f"    De: {self.remitente}\n\
+        return f'    De: {self.remitente}\n\
     Enviado a las {self.hora} del {self.fecha}\n\n\
     Asunto: {self.asunto}\n\n\n\
-    \"{self.cuerpo}\""
-    
+    "{self.cuerpo}"'

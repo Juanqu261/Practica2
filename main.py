@@ -28,16 +28,17 @@ if user == None:
 
 print(
     "Acciones:\n\n\
-    1 - Ver Bandeja\n\
+    1 - Enviar Mensaje\n\
+    2 - Ver Bandeja de entrada\n\
+    3 - Ver Bandeja de leidos\n\
+    4 - Ver Borradores \n\
     6 - Cambiar contraseña de un empleado\n\
     7 - Eliminar empleado\n\
-    x - ...\n\n\
+    0 - Salir\n\n\
 Indique el número de la acción que desea realizar:\n"
 )
 
 ba = DoubleList()
-
-print(dict_mensajes)
 
 for msg in dict_mensajes[cedula]["BA"]:
     mensaje = dict_mensajes[cedula]["BA"][msg]
@@ -61,11 +62,21 @@ for msg in dict_mensajes[cedula]["BA"]:
     )
     ba.add_last(mensaje)
 
+
 match input():
     case "1":
+        enviar_mensaje(remitente=cedula)
+    case "2":
         ver_bandeja(user.get_cedula(), ba)
+    case "3":
+        print("Not ready")
+    case "4":
+        print("Not ready")
+    case "5":
+        print("Not ready")
     case "6":
         cambiar_contrasena(lista_usuarios)
     case "7":
         eliminar_usuario(lista_usuarios)
-        eliminar_usuario(lista_usuarios)
+    case "0":
+        quit()
