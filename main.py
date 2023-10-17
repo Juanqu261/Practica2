@@ -22,7 +22,8 @@ dict_mensajes = leer_json("mensajes.json")
 #   De algun objeto(usuario) existente dentro de lista_usuarios.
 print("Bienvenido al Sistema de Mensajería")
 
-user, cedula, cargo = login(lista_usuarios)
+user = login(lista_usuarios)
+# getCargo()
 
 # Si se omite el login
 if user == None:
@@ -44,20 +45,20 @@ Indique el número de la acción que desea realizar:\n"
 
 match input():
     case "1":
-        enviar_mensaje(remitente=cedula)
+        enviar_mensaje(remitente=user.get_cedula())
     case "2":
         ba = bandeja_entrada(
-            mensajes=dict_mensajes, cedula=cedula, usuarios=lista_usuarios
+            mensajes=dict_mensajes, cedula=user.get_cedula(), usuarios=lista_usuarios
         )
         ver_bandeja(user.get_cedula(), ba)
     case "3":
         ml = mensajes_leidos(
-            mensajes=dict_mensajes, cedula=cedula, usuarios=lista_usuarios
+            mensajes=dict_mensajes, cedula=user.get_cedula(), usuarios=lista_usuarios
         )
         ver_bandeja(user.get_cedula(), ml)
     case "4":
         b = bandeja_borradores(
-            mensajes=dict_mensajes, cedula=cedula, usuarios=lista_usuarios
+            mensajes=dict_mensajes, cedula=user.get_cedula(), usuarios=lista_usuarios
         )
         ver_bandeja(user.get_cedula(), b)
     case "5":

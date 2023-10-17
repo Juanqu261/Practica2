@@ -65,7 +65,7 @@ def login(lista: DoubleList) -> bool:
                     cargo = temp.get_data().get_cargo()
                     print(f"\nHola, {temp.get_data().nombre} ({cargo})")
                     logged_in = True
-                    return temp.get_data(), id, cargo
+                    return temp.get_data()
                 else:
                     print("\nContraseña incorrecta. Por favor intentelo de nuevo.")
                     logged_in = False

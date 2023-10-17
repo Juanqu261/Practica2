@@ -19,12 +19,11 @@ def leer_json(nombre_del_archivo: str) -> dict:
 
 def guardar_json(nombre_del_archivo: int, guardar: any) -> None:
     """
-    [Summary]:
+    ### Summary:
         Guarda el diccionario en un archivo json
-    [Args]:
+    ### Args:
         nombre_del_archivo (str): Nombre del archivo a guardar
         guardar (dict): Diccionario a guardar
     """
-    # with nombre_del_archivo, "w":
-    #    json.dump(guardar, #nombre_del_archivo)
-    pass
+    with open(nombre_del_archivo, "w"):
+        diccionario = json.dump(nombre_del_archivo)
