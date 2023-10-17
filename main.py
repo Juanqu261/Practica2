@@ -1,35 +1,30 @@
-from estructuras import *
-from archivos import *
-from acciones import *
-from modelos import *
+import estructuras
+import archivos
+import acciones
+import modelos
 
 # ------------------------------ Lectura de Archivos ------------------------------ #
 
-# Obtener datos de los empleados
-dict_empleados = leer_json("empleados.json")
+# Obtener datos de los Empleados
+dict_empleados = archivos.leer_json("empleados.json")
 
-# Obtener las contraseñas y cargos
-dict_credenciales = leer_json("password.json")
+# Obtener las Contraseñas y cargos
+dict_credenciales = archivos.leer_json("password.json")
 
-# Crear objetos usuario --> Creamos objetos que contengan la informacion de los diccionarios
-lista_usuarios: DoubleList = cargar_usuarios(dict_empleados, dict_credenciales)
+# Extraer la información de los diccionarios en una DoubleList
+lista_usuarios = archivos.cargar_usuarios(dict_empleados, dict_credenciales)
 
-# Mensajes
-dict_mensajes = leer_json("mensajes.json")
+# Obtener Mensajes
+dict_mensajes = archivos.leer_json("mensajes.json")
 
+# ------------------------------ Interfaz ------------------------------ #
 
-# Login --> Para ingresar al sistema, los datos ingresados deben coincidir con los datos
-#   De algun objeto(usuario) existente dentro de lista_usuarios.
-print("Bienvenido al Sistema de Mensajería")
+print("Bienvenido/a al Sistema de Mensajería")
 
-user = login(lista_usuarios)
-# getCargo()
+# Inicio de Sesión del usuario
+user = acciones.login(lista_usuarios)
 
-# Si se omite el login
-if user == None:
-    quit()
-
-
+# "Menú"
 print(
     "Acciones:\n\n\
     1 - Enviar Mensaje\n\
@@ -43,29 +38,30 @@ print(
 Indique el número de la acción que desea realizar:\n"
 )
 
+# Realizar acción escogida
 match input():
     case "1":
-        enviar_mensaje(remitente=user.get_cedula())
+        acciones.enviar_mensaje(remitente=user.get_cedula())
     case "2":
-        ba = bandeja_entrada(
+        ba = acciones.bandeja_entrada(
             mensajes=dict_mensajes, cedula=user.get_cedula(), usuarios=lista_usuarios
         )
-        ver_bandeja(user.get_cedula(), ba)
+        acciones.ver_bandeja(user.get_cedula(), ba)
     case "3":
-        ml = mensajes_leidos(
-            mensajes=dict_mensajes, cedula=user.get_cedula(), usuarios=lista_usuarios
+        ml = acciones.mensajes_leidos(
+            mensajes=dict_mensajes, cedula=cedula, usuarios=lista_usuarios
         )
-        ver_bandeja(user.get_cedula(), ml)
+        acciones.ver_bandeja(user.get_cedula(), ml)
     case "4":
-        b = bandeja_borradores(
-            mensajes=dict_mensajes, cedula=user.get_cedula(), usuarios=lista_usuarios
+        b = acciones.bandeja_borradores(
+            mensajes=dict_mensajes, cedula=cedula, usuarios=lista_usuarios
         )
-        ver_bandeja(user.get_cedula(), b)
+        acciones.ver_bandeja(user.get_cedula(), b)
     case "5":
         pass
     case "6":
-        cambiar_contrasena(lista_usuarios)
+        acciones.cambiar_contrasena(lista_usuarios)
     case "7":
-        eliminar_usuario(lista_usuarios)
+        acciones.eliminar_usuario(lista_usuarios)
     case "0":
         quit()

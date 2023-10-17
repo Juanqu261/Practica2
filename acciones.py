@@ -34,30 +34,26 @@ def cargar_usuarios(diccionario_datos: dict, credenciales: dict) -> DoubleList:
     return lista_usuarios_cargados
 
 
-def login(lista: DoubleList) -> bool:
+def login(lista: DoubleList) -> Usuario:
     """
     ### Summary:
-        El usuario a ingresar existe en el sistema
+        Inicia sesión con inputs del usuario para la Cédula y la Contraseña.
     ### Args:
-        id (str): id del usuario que desea acceder
-        password (str): Contraseña del usuario que desea acceder
-        lista (DoubleList): Lista Doble donde que almacena los usuarios existentes
+        lista (DoubleList): Lista los usuarios existentes
     ### Returns:
-        True : id y password se encuentran y coinciden con el usuario ubicado en lista
-        False : id o password no se encuentran o no coinciden con el usuario ubicado en lista
+        user (Usuario): 
     """
+
     logged_in = False
     id = 0
     while not logged_in:
+        # Recibir credenciales
         print("\nIngrese su Cédula:")
         id = input()
-        if id == "x":
-            return None
         print("\nIngrese su Contraseña:")
         password = input()
-        if password == "x":
-            return None
 
+        # Recorrer la lista buscando al usuario
         temp = lista.get_first()
         for i in range(lista.get_size()):
             if temp.get_data().cedula == id:
