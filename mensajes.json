@@ -5,8 +5,8 @@
                 "remitente":"34568910",
                 "fecha":"dd/mm/aaaa",
                 "hora":"00:00",
-                "asunto":"------",
-                "cuerpo":"-----------------------"
+                "asunto":"---Este es un entrada---",
+                "cuerpo":"--------------------"
             },
             "mensaje2":{
                 "remitente":"2345902",
@@ -21,7 +21,7 @@
                 "remitente":"2345902",
                 "fecha":"dd/mm/aaaa",
                 "hora":"00:00",
-                "asunto":"------",
+                "asunto":"---Este es un leido---",
                 "cuerpo":"-----------------------"
             }
         },
@@ -30,7 +30,7 @@
                 "remitente":"124525423",
                 "fecha":"dd/mm/aaaa",
                 "hora":"00:00",
-                "asunto":"------",
+                "asunto":"---Este es un borrador---",
                 "cuerpo":"-----------------------"
             }
         }        

@@ -65,7 +65,7 @@ def login(lista: DoubleList) -> bool:
                     cargo = temp.get_data().get_cargo()
                     print(f"\nHola, {temp.get_data().nombre} ({cargo})")
                     logged_in = True
-                    return temp.get_data(), id
+                    return temp.get_data(), id, cargo
                 else:
                     print("\nContraseña incorrecta. Por favor intentelo de nuevo.")
                     logged_in = False
@@ -172,3 +172,86 @@ def enviar_mensaje(remitente):
             break
         else:
             print("Opcion invalida")
+
+
+def bandeja_entrada(mensajes, cedula, usuarios) -> DoubleList:
+    ba = DoubleList()
+
+    for msg in mensajes[cedula]["BA"]:
+        mensaje = mensajes[cedula]["BA"][msg]
+
+        # Búsqueda del nombre del remitente
+        remitente = ""
+        temp = usuarios.get_first()
+        while temp.get_next() != None:
+            if temp.get_data().get_cedula() == mensaje["remitente"]:
+                remitente = temp.get_data().get_nombre()
+                break
+            temp = temp.get_next()
+
+        mensaje = Mensaje(
+            remitente,
+            cedula,
+            mensaje["fecha"],
+            mensaje["hora"],
+            mensaje["asunto"],
+            mensaje["cuerpo"],
+        )
+        ba.add_last(mensaje)
+    return ba
+
+
+# Cambiar de lista
+def mensajes_leidos(mensajes, cedula, usuarios) -> DoubleList:
+    ba = DoubleList()
+
+    for msg in mensajes[cedula]["ML"]:
+        mensaje = mensajes[cedula]["ML"][msg]
+
+        # Búsqueda del nombre del remitente
+        remitente = ""
+        temp = usuarios.get_first()
+        while temp.get_next() != None:
+            if temp.get_data().get_cedula() == mensaje["remitente"]:
+                remitente = temp.get_data().get_nombre()
+                break
+            temp = temp.get_next()
+
+        mensaje = Mensaje(
+            remitente,
+            cedula,
+            mensaje["fecha"],
+            mensaje["hora"],
+            mensaje["asunto"],
+            mensaje["cuerpo"],
+        )
+        ba.add_last(mensaje)
+    return ba
+
+
+# Cambiar de lista
+def bandeja_borradores(mensajes, cedula, usuarios) -> DoubleList:
+    ba = DoubleList()
+
+    for msg in mensajes[cedula]["B"]:
+        mensaje = mensajes[cedula]["B"][msg]
+
+        # Búsqueda del nombre del remitente
+        remitente = ""
+        temp = usuarios.get_first()
+        while temp.get_next() != None:
+            if temp.get_data().get_cedula() == mensaje["remitente"]:
+                remitente = temp.get_data().get_nombre()
+                break
+            temp = temp.get_next()
+
+        mensaje = Mensaje(
+            remitente,
+            cedula,
+            mensaje["fecha"],
+            mensaje["hora"],
+            mensaje["asunto"],
+            mensaje["cuerpo"],
+        )
+        ba.add_last(mensaje)
+    return ba

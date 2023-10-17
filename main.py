@@ -19,7 +19,7 @@ dict_mensajes = leer_json("mensajes.json")
 #   De algun objeto(usuario) existente dentro de lista_usuarios.
 print("Bienvenido al Sistema de Mensajería")
 
-user, cedula = login(lista_usuarios)
+user, cedula, cargo = login(lista_usuarios)
 
 # Si se omite el login
 if user == None:
@@ -32,48 +32,34 @@ print(
     2 - Ver Bandeja de entrada\n\
     3 - Ver Bandeja de leidos\n\
     4 - Ver Borradores \n\
+    5 - Pendiente \n\
     6 - Cambiar contraseña de un empleado\n\
     7 - Eliminar empleado\n\
     0 - Salir\n\n\
 Indique el número de la acción que desea realizar:\n"
 )
 
-ba = DoubleList()
-
-for msg in dict_mensajes[cedula]["BA"]:
-    mensaje = dict_mensajes[cedula]["BA"][msg]
-
-    # Búsqueda del nombre del remitente
-    remitente = ""
-    temp = lista_usuarios.get_first()
-    while temp.get_next() != None:
-        if temp.get_data().get_cedula() == mensaje["remitente"]:
-            remitente = temp.get_data().get_nombre()
-            break
-        temp = temp.get_next()
-
-    mensaje = Mensaje(
-        remitente,
-        cedula,
-        mensaje["fecha"],
-        mensaje["hora"],
-        mensaje["asunto"],
-        mensaje["cuerpo"],
-    )
-    ba.add_last(mensaje)
-
 
 match input():
     case "1":
         enviar_mensaje(remitente=cedula)
     case "2":
+        ba = bandeja_entrada(
+            mensajes=dict_mensajes, cedula=cedula, usuarios=lista_usuarios
+        )
         ver_bandeja(user.get_cedula(), ba)
     case "3":
-        print("Not ready")
+        ml = mensajes_leidos(
+            mensajes=dict_mensajes, cedula=cedula, usuarios=lista_usuarios
+        )
+        ver_bandeja(user.get_cedula(), ml)
     case "4":
-        print("Not ready")
+        b = bandeja_borradores(
+            mensajes=dict_mensajes, cedula=cedula, usuarios=lista_usuarios
+        )
+        ver_bandeja(user.get_cedula(), b)
     case "5":
-        print("Not ready")
+        pass
     case "6":
         cambiar_contrasena(lista_usuarios)
     case "7":
