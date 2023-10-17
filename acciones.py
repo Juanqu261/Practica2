@@ -36,13 +36,13 @@ def crear_usuarios(diccionario_datos: dict, credenciales: dict) -> DoubleList:
 
 def login(lista: DoubleList) -> bool:
     """
-    [Summary]:
+    ### Summary:
         El usuario a ingresar existe en el sistema
-    [Args]:
+    ### Args:
         id (str): id del usuario que desea acceder
         password (str): Contraseña del usuario que desea acceder
         lista (DoubleList): Lista Doble donde que almacena los usuarios existentes
-    [Returns]:
+    ### Returns:
         True : id y password se encuentran y coinciden con el usuario ubicado en lista
         False : id o password no se encuentran o no coinciden con el usuario ubicado en lista
     """
@@ -137,6 +137,11 @@ def ver_bandeja(id: str, ba: DoubleList()):
         print("No tienes mensajes nuevos para leer.")
 
 
+# Hacer this
+def ver_bandeja_secuencial():
+    pass
+
+
 def enviar_mensaje(remitente):
     remitente = remitente
     destinatario = input("Ingrese la cedula del destinatario:\n")
@@ -153,7 +158,7 @@ def enviar_mensaje(remitente):
         cuerpo=cuerpo,
     )
 
-    opcion = input(
+    print(
         "Opciones:\n\
             1. Guardar borrador\n\
             2. Enviar mensaje\n\
@@ -161,6 +166,7 @@ def enviar_mensaje(remitente):
     )
 
     while True:
+        opcion = input()
         if opcion == "1":
             print("Borrador")
             break

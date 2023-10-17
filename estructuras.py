@@ -255,6 +255,7 @@ class Stack:
             return None
         return self.data.get_first().get_data()
 
+
 # Realizar
 class Queue:
     def __init__(self):
@@ -262,10 +263,10 @@ class Queue:
 
     def get_size(self):
         return self.data.get_size()
-    
+
     def is_empty(self):
         return self.data.is_empty()
-    
+
     def enqueue(self, e):
         self.data.addLast(e)
 
@@ -274,7 +275,7 @@ class Queue:
             return None
         else:
             return self.data.remove_first()
-    
+
     def first(self):
         if self.is_empty():
             return None

@@ -3,14 +3,14 @@
         "BA" : {
             "mensaje1":{
                 "remitente":"34568910",
-                "fecha":"dd/mm/aaaa",
+                "fecha":"aaaa/mm/dd",
                 "hora":"00:00",
                 "asunto":"---Este es un entrada---",
                 "cuerpo":"--------------------"
             },
             "mensaje2":{
                 "remitente":"2345902",
-                "fecha":"05/10/2321",
+                "fecha":"2022/06/12",
                 "hora":"01:00",
                 "asunto":"hola",
                 "cuerpo":"jajjaaj"
@@ -19,7 +19,7 @@
         "ML":{
             "mensaje1":{
                 "remitente":"2345902",
-                "fecha":"dd/mm/aaaa",
+                "fecha":"aaaa/mm/dd",
                 "hora":"00:00",
                 "asunto":"---Este es un leido---",
                 "cuerpo":"-----------------------"
@@ -28,7 +28,7 @@
         "B":{
             "mensaje1":{
                 "remitente":"124525423",
-                "fecha":"dd/mm/aaaa",
+                "fecha":"aaaa/mm/dd",
                 "hora":"00:00",
                 "asunto":"---Este es un borrador---",
                 "cuerpo":"-----------------------"

@@ -9,7 +9,7 @@ from modelos import *
 empleados, credenciales = leer_json("empleados.json"), leer_json("password.json")
 
 # Crear objetos usuario --> Creamos objetos que contengan la informacion de los diccionarios
-lista_usuarios = crear_usuarios(empleados, credenciales)
+lista_usuarios: DoubleList = crear_usuarios(empleados, credenciales)
 
 # Mensajes
 dict_mensajes = leer_json("mensajes.json")
@@ -38,7 +38,6 @@ print(
     0 - Salir\n\n\
 Indique el número de la acción que desea realizar:\n"
 )
-
 
 match input():
     case "1":
