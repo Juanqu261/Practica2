@@ -5,11 +5,11 @@ from estructuras import DoubleList
 
 def leer_json(nombre_del_archivo: str) -> dict:
     """
-    [Summary]:
-        Lee el json y lo retorna como un diccionario
-    [Args]:
+    ### Summary:
+        Lee el archivo json y lo retorna como un diccionario
+    ### Args:
         nombre_del_archivo (str): Nombre del archivo a leer
-    [Returns]:
+    ### Returns:
         diccionario (dict): Diccionario con los datos del json
     """
     with open(nombre_del_archivo, "r") as file:

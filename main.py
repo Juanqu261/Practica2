@@ -3,13 +3,16 @@ from archivos import *
 from acciones import *
 from modelos import *
 
-# LECTURA DE ARCHIVOS
+# ------------------------------ Lectura de Archivos ------------------------------ #
 
-# Registro --> Cargamos los archivos .json en formato de diccionarios
-empleados, credenciales = leer_json("empleados.json"), leer_json("password.json")
+# Obtener datos de los empleados
+dict_empleados = leer_json("empleados.json")
+
+# Obtener las contraseñas y cargos
+dict_credenciales = leer_json("password.json")
 
 # Crear objetos usuario --> Creamos objetos que contengan la informacion de los diccionarios
-lista_usuarios: DoubleList = crear_usuarios(empleados, credenciales)
+lista_usuarios: DoubleList = cargar_usuarios(dict_empleados, dict_credenciales)
 
 # Mensajes
 dict_mensajes = leer_json("mensajes.json")

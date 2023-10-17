@@ -5,14 +5,14 @@ from datetime import datetime
 
 
 # ------------------------------ Manejo de usuarios ------------------------------ #
-def crear_usuarios(diccionario_datos: dict, credenciales: dict) -> DoubleList:
+def cargar_usuarios(diccionario_datos: dict, credenciales: dict) -> DoubleList:
     """
-    [Summary]:
+    ### Summary:
         Crea una lista de usuarios(objetos) existentes en el sistema
-    [Args]:
+    ### Args:
         diccionario (dict): Diccionario con los datos de los usuarios
         credenciales (dict): Diccionario con las contraseñas y cargos de los usuarios
-    [Returns]:
+    ### Returns:
         lista_usuarios_cargados (DoubleList): Usuarios creados
     """
     lista_usuarios_cargados = DoubleList()
