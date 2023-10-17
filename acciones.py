@@ -141,7 +141,7 @@ def enviar_mensaje(remitente):
     remitente = remitente
     destinatario = input("Ingrese la cedula del destinatario:\n")
     fecha = datetime.now().strftime("%Y/%m/%d")
-    hora = datetime.now().strftime("%Y/%m/%d")
+    hora = datetime.now().strftime("%H:%M:%S")
     asunto = input("Ingrese el asunto del mensaje:\n")
     cuerpo = input("Ingrese el mensaje:\n")
     mensaje = Mensaje(
@@ -157,7 +157,7 @@ def enviar_mensaje(remitente):
         "Opciones:\n\
             1. Guardar borrador\n\
             2. Enviar mensaje\n\
-            3. Descartar"
+            3. Descartar\n"
     )
 
     while True:
@@ -201,7 +201,7 @@ def bandeja_entrada(mensajes, cedula, usuarios) -> DoubleList:
     return ba
 
 
-# Cambiar de lista
+# Cambiar de doble a cola
 def mensajes_leidos(mensajes, cedula, usuarios) -> DoubleList:
     ba = DoubleList()
 
