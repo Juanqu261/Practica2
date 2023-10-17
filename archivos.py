@@ -25,5 +25,6 @@ def guardar_json(nombre_del_archivo: int, guardar: any) -> None:
         nombre_del_archivo (str): Nombre del archivo a guardar
         guardar (dict): Diccionario a guardar
     """
-    with open(nombre_del_archivo, "w"):
-        diccionario = json.dump(guardar, nombre_del_archivo, indent=4)
+    with open(nombre_del_archivo, "w") as file:
+        dicccionario = json.dumps(guardar, indent=4)
+        file.write(dicccionario)
