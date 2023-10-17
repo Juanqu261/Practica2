@@ -1,38 +1,36 @@
 {
     "24567898": {
-        "BA" : {
-            "mensaje1":{
-                "remitente":"34568910",
-                "fecha":"aaaa/mm/dd",
-                "hora":"00:00",
-                "asunto":"---Este es un entrada---",
-                "cuerpo":"--------------------"
-            },
-            "mensaje2":{
-                "remitente":"2345902",
-                "fecha":"2022/06/12",
-                "hora":"01:00",
-                "asunto":"hola",
-                "cuerpo":"jajjaaj"
-            }
+        "mensaje1":{
+            "tipo":"BA",
+            "remitente":"34568910",
+            "fecha":"aaaa/mm/dd",
+            "hora":"00:00",
+            "asunto":"---Este es un entrada---",
+            "cuerpo":"--------------------"
         },
-        "ML":{
-            "mensaje1":{
-                "remitente":"2345902",
-                "fecha":"aaaa/mm/dd",
-                "hora":"00:00",
-                "asunto":"---Este es un leido---",
-                "cuerpo":"-----------------------"
-            }
+        "mensaje2":{
+            "tipo":"BA",
+            "remitente":"2345902",
+            "fecha":"2022/06/12",
+            "hora":"01:00",
+            "asunto":"hola",
+            "cuerpo":"jajjaaj"
         },
-        "B":{
-            "mensaje1":{
-                "remitente":"124525423",
-                "fecha":"aaaa/mm/dd",
-                "hora":"00:00",
-                "asunto":"---Este es un borrador---",
-                "cuerpo":"-----------------------"
-            }
-        }        
+        "mensaje3":{
+            "tipo":"ML",
+            "remitente":"2345902",
+            "fecha":"aaaa/mm/dd",
+            "hora":"00:00",
+            "asunto":"---Este es un leido---",
+            "cuerpo":"-----------------------"
+        },
+        "mensaje4":{
+            "tipo":"B",
+            "remitente":"124525423",
+            "fecha":"aaaa/mm/dd",
+            "hora":"00:00",
+            "asunto":"---Este es un borrador---",
+            "cuerpo":"-----------------------"
+        }
     }
 }

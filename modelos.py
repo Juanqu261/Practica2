@@ -91,6 +91,7 @@ class Mensaje:
         hora=None,
         asunto=None,
         cuerpo=None,
+        tipo=None,
     ):
         self.remitente = remitente
         self.destinatario = destinatario
@@ -98,6 +99,10 @@ class Mensaje:
         self.hora = hora
         self.asunto = asunto
         self.cuerpo = cuerpo
+        self.tipo = tipo
+
+    def set_tipo(self, tipo="B"):
+        self.tipo = tipo
 
     def get_remitente(self):
         return self.remitente
@@ -138,6 +143,7 @@ class Mensaje:
     def __dict__(self):
         return {
             f"{self.remitente} {self.fecha} {self.hora}": {
+                "tipo": self.tipo,
                 "remitente": self.remitente,
                 "fecha": self.fecha,
                 "hora": self.hora,

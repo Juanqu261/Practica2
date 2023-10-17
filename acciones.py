@@ -41,7 +41,7 @@ def login(lista: DoubleList) -> Usuario:
     ### Args:
         lista (DoubleList): Lista los usuarios existentes
     ### Returns:
-        user (Usuario): 
+        user (Usuario):
     """
 
     logged_in = False
