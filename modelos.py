@@ -75,6 +75,9 @@ class Usuario:
     def set_cargo(self, e):
         self.cargo = e
 
+    def es_admin(self) -> bool:
+        return True if self.cargo == "administrador" else False
+
     def __str__(self):
         return f"{self.nombre} {self.contrasena} {self.cedula}"
 
