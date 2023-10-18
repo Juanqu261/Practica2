@@ -268,7 +268,7 @@ class Queue:
         return self.data.is_empty()
 
     def enqueue(self, e):
-        self.data.addLast(e)
+        self.data.add_last(e)
 
     def dequeue(self):
         if self.is_empty():
@@ -280,4 +280,4 @@ class Queue:
         if self.is_empty():
             return None
         else:
-            return self.data.First().getData()
+            return self.data.get_first().get_data()

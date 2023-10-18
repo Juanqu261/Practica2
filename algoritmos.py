@@ -1,4 +1,4 @@
-from estructuras import DoubleList
+from estructuras import DoubleList, Stack, Queue
 
 
 def middle(d_list, start, end):
@@ -43,3 +43,20 @@ def binary_search(d_list, n):
             start = mid.get_next()
     mid = middle(d_list, start, end)
     return None
+
+
+def lista_pila(list:DoubleList):
+    stack = Stack()
+    temp = list.get_last()
+    for i in range(list.size):
+        stack.push(temp)
+        temp = temp.get_prev()
+    return stack
+
+def lista_cola(list:DoubleList):
+    queue = Queue()
+    temp = list.get_last()
+    for i in range(list.size):
+        queue.enqueue(temp)
+        temp = temp.get_prev()
+    return queue

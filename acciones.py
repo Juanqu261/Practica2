@@ -2,7 +2,7 @@ from estructuras import DoubleList
 from modelos import Usuario, Mensaje
 from archivos import *
 from datetime import datetime
-
+from algoritmos import lista_cola, lista_pila
 
 # ------------------------------ Manejo de usuarios ------------------------------ #
 
@@ -171,6 +171,7 @@ def enviar_mensaje(remitente):
             break
         else:
             print("Opcion invalida")
+            break
 
 
 def ver_bandeja(id: str, ba: DoubleList):

@@ -16,7 +16,7 @@
 - [ ] Cargar en 'empleados.txt'
 - [x] Login
 - [ ] Admin:
-  - [ ] Agregar usuario
+  - [x] Agregar usuario
   - [x] Cambiar contrasenas
   - [x] Eliminar empleado
   - [ ] Guardar cambios en el archivo (al final)
