@@ -163,12 +163,16 @@ class DoubleList:
     def remove_first(self):
         if self.is_empty():
             return None
+        elif (self.size == 1):
+            temp = self.head
+            self.head = None
+            self.tail = None
         else:
             temp = self.head
             self.head = temp.get_next()
             temp.set_next(None)
             self.head.set_prev(None)
-            self.size -= 1
+        self.size -= 1
         return temp.get_data()
 
     def remove_last(self):
@@ -185,9 +189,9 @@ class DoubleList:
     def remove(self, node):
         """Se asume que la lista contiene a node."""
         if self.head == node:
-            self.remove_first()
+            return self.remove_first()
         elif self.tail == node:
-            self.remove_last()
+            return self.remove_last()
         else:
             prev = node.get_prev()
             next = node.get_next()
