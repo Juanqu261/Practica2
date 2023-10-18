@@ -334,7 +334,7 @@ def ver_borradores(id: str, b: Stack):
         print(b.top())
         print(
             "¿Qué deseas hacer con este borrador?\n\n\
-    1 - Enviar\n\
+    1 - Enviar (FALTA)\n\
     2 - Descartar\n\
     3 - Cerrar Sesión\n"
         )
