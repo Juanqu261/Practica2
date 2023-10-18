@@ -72,7 +72,16 @@ def login(lista: DoubleList) -> Usuario:
         print("\n*Error en la Cédula o Contraseña ingresadas. Por favor inténtelo de nuevo.")
         logged_in = False
 
+# Admin
 def crear_usuario(lista: DoubleList):
+    """
+    ### Summary:
+        Añade un nuevo usuario con los datos indicados a la lista de usuarios creada
+        en main.
+    ### Args:
+        lista (DoubleList): Lista de usuarios en el sistema
+    """
+
     print("\n\nIndique la cedula del nuevo empleado: ")
     cedula = input()
     print("\nIndique el nombre del nuevo empleado: ")
@@ -99,6 +108,7 @@ def crear_usuario(lista: DoubleList):
     lista.add_last(user)
     print("\n\nUsuario creado con exito.")
 
+# Admin
 def cambiar_contrasena(lista: DoubleList):
     print("\n\nIndique la cedula del empleado: ")
     cedula = input()
@@ -113,7 +123,7 @@ def cambiar_contrasena(lista: DoubleList):
             break
         temp = temp.get_next()
 
-
+# Admin
 def eliminar_usuario(lista: DoubleList):
     print("\n\nIndique la cedula del empleado: ")
     cedula = input()
@@ -183,9 +193,6 @@ def ver_bandeja(id: str, ba: DoubleList):
         id (str): ID del usuario que consulta los mensajes
         ba (DoubleList): Estructura con el tipo de mensajes que quiere consultar
         el usuario
-    
-    ### Returns:
-        None
     """
 
     # Obtención de la bandeja
@@ -204,8 +211,33 @@ def ver_bandeja(id: str, ba: DoubleList):
             print(50 * "-")
         temp = temp.get_next()
         i += 1
+    
+    # Continuación
     if i == 1:
         print("No tienes mensajes nuevos para leer.")
+    else:
+        print("\n¿Qué mensaje deseas ver?")
+        inx = int(input())
+        temp = ba.get_first()
+        for k in range(inx - 1):
+            temp = temp.get_next()
+        mensaje = temp.get_data()
+        print(mensaje)
+        ba.remove(temp)
+        print(
+            "Opciones:\n\n\
+    1 - Volver a Bandeja\n\
+    2 - Cerrar Sesión\n"
+        )
+
+        match input():
+            case "1":
+                if (ba.get_size() > 0):
+                    ver_bandeja(id, ba)
+                else:
+                    print("No tiene mensajes nuevos para leer.")
+            case "2":
+                quit()
 
 
 def generar_bandejas(mensajes: dict, cedula: str, usuarios: DoubleList) -> DoubleList:

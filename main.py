@@ -71,7 +71,7 @@ else:  # Este es para empleado
         "Acciones:\n\n\
     1 - Enviar Mensaje\n\
     2 - Ver Bandeja de entrada\n\
-    3 - Ver Bandeja de leidos\n\
+    3 - Ver Mensajes Leídos\n\
     4 - Ver Borradores \n\
     0 - Salir\n\n\
 Indique el número de la acción que desea realizar:"
