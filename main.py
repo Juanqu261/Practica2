@@ -20,7 +20,7 @@ dict_mensajes = archivos.leer_json("mensajes.json")
 
 # ----------------------------------- Interfaz ----------------------------------- #
 
-print("Bienvenido/a al Sistema de Mensajería")
+print("\n¡Bienvenido/a al Sistema de Mensajería!")
 
 # Inicio de Sesión del usuario
 user = acciones.login(lista_usuarios)
@@ -49,7 +49,7 @@ if (user.es_admin()):
     7 - Eliminar empleado\n\
     0 - Salir")
 
-print("\nIndique el número de la acción que desea realizar:\n")
+print("\nIndique el número de la acción que desea realizar:")
 
 # Realizar Acción escogida
 match input():

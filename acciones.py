@@ -259,8 +259,10 @@ def ver_bandeja(id: str, ba: DoubleList):
     """
 
     if (ba.is_empty()):
-        print("No tiene mensajes nuevos para leer.")
+        print("\nNo tiene mensajes nuevos para leer.")
     else:
+        print("\n    BANDEJA DE ENTRADA\n\n" + 50 * "-")
+
         # Obtención de la bandeja
         temp = ba.get_first()
         i = 1
@@ -279,44 +281,38 @@ def ver_bandeja(id: str, ba: DoubleList):
             i += 1
         
         # Continuación
-        if i == 1:
-            print("No tienes mensajes nuevos para leer.")
-        else:
-            print("\n¿Qué mensaje deseas ver?")
-            inx = int(input())
-            temp = ba.get_first()
-            for k in range(inx - 1):
-                temp = temp.get_next()
-            mensaje = temp.get_data()
-            print(mensaje)
-            ba.remove(temp)
-            print(
-                "Opciones:\n\n\
-        1 - Volver a Bandeja\n\
-        2 - Cerrar Sesión\n"
-            )
+        print("\n¿Qué mensaje desea ver? (indique su numeral)")
+        inx = int(input())
+        temp = ba.get_first()
+        for k in range(inx - 1):
+            temp = temp.get_next()
+        mensaje = temp.get_data()
+        print(mensaje)
+        ba.remove(temp)
+        print(
+            "Opciones:\n\n\
+    1 - Volver a Bandeja\n\
+    2 - Cerrar Sesión\n"
+        )
 
-            match input():
-                case "1":
-                    if (ba.get_size() > 0):
-                        ver_bandeja(id, ba)
-                    else:
-                        print("No tiene mensajes nuevos para leer.")
-                case "2":
-                    quit()
+        match input():
+            case "1":
+                ver_bandeja(id, ba)
+            case "2":
+                quit()
 
 
 def ver_leidos(id: str, ml: Queue):
     if (ml.is_empty()):
-        print("No has leído ningún mensaje.")
+        print("\nNo has leído ningún mensaje.")
     else:
         print("\n   MENSAJES LEÍDOS\n")
         print("Mensaje leído más antiguo:\n")
         print(ml.first())
 
         print("¿Qué deseas hacer?\n\n\
-1 - Ver Siguiente Mensaje Leído\n\
-2 - Cerrar Sesión\n")
+    1 - Ver Siguiente Mensaje Leído\n\
+    2 - Cerrar Sesión\n")
         match input():
             case "1":
                 ml.dequeue()
@@ -327,9 +323,9 @@ def ver_leidos(id: str, ml: Queue):
 
 def ver_borradores(id: str, b: Stack):
     if (b.is_empty()):
-        print("No tienes borradores guardados.")
+        print("\nNo tienes borradores guardados.")
     else:
-        print("\n   BORRADORES\n")
+        print("\n    BORRADORES\n")
         print("Borrador más reciente:\n")
         print(b.top())
         print(
