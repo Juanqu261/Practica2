@@ -256,7 +256,6 @@ class Stack:
         return self.data.get_first().get_data()
 
 
-# Realizar
 class Queue:
     def __init__(self):
         self.data = List()

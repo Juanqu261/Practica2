@@ -43,3 +43,17 @@ def binary_search(d_list, n):
             start = mid.get_next()
     mid = middle(d_list, start, end)
     return None
+
+
+def buscar_usuario(id: str, lista: DoubleList):
+    """
+    ### Summary:
+        Recorre la lista linealmente desde la cabecera hasta que se encuentre
+        un Usuario con la cedula (id) indicada
+    """
+
+    temp = lista.get_first()
+    while (temp.get_data().get_cedula() != id):
+        temp = temp.get_next()
+    return temp.get_data()
+
