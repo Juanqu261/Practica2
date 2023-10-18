@@ -5,10 +5,10 @@ import modelos
 
 # ------------------------------ Lectura de Archivos ------------------------------ #
 
-# Obtener datos de los Empleados
+# Obtener Datos de los Empleados
 dict_empleados = archivos.leer_json("empleados.json")
 
-# Obtener las Contraseñas y cargos
+# Obtener las Contraseñas y Cargos
 dict_credenciales = archivos.leer_json("password.json")
 
 # Extraer la información de los diccionarios en una DoubleList
@@ -17,12 +17,19 @@ lista_usuarios = acciones.cargar_usuarios(dict_empleados, dict_credenciales)
 # Obtener Mensajes
 dict_mensajes = archivos.leer_json("mensajes.json")
 
-# ------------------------------ Interfaz ------------------------------ #
+# ----------------------------------- Interfaz ----------------------------------- #
 
 print("Bienvenido/a al Sistema de Mensajería")
 
 # Inicio de Sesión del usuario
 user = acciones.login(lista_usuarios)
+
+# Generación de las estructuras de datos con los mensajes
+ba, ml, b = acciones.generar_bandejas(
+    mensajes=dict_mensajes,
+    cedula=user.get_cedula(),
+    usuarios=lista_usuarios
+)
 
 # Realizar acción escogida
 if user.es_admin():
@@ -42,25 +49,13 @@ Indique el número de la acción que desea realizar:\n"
         case "1":
             acciones.enviar_mensaje(remitente=user.get_cedula())
         case "2":
-            ba = acciones.bandeja_entrada(
-                mensajes=dict_mensajes,
-                cedula=user.get_cedula(),
-                usuarios=lista_usuarios,
-            )
+            print("\n   BANDEJA DE ENTRADA\n")
             acciones.ver_bandeja(user.get_cedula(), ba)
         case "3":
-            ml = acciones.mensajes_leidos(
-                mensajes=dict_mensajes,
-                cedula=user.get_cedula(),
-                usuarios=lista_usuarios,
-            )
+            print("\n   MENSAJES LEÍDOS\n")
             acciones.ver_bandeja(user.get_cedula(), ml)
         case "4":
-            b = acciones.bandeja_borradores(
-                mensajes=dict_mensajes,
-                cedula=user.get_cedula(),
-                usuarios=lista_usuarios,
-            )
+            print("\n   BORRADORES\n")
             acciones.ver_bandeja(user.get_cedula(), b)
         case "5":
             pass
@@ -79,31 +74,19 @@ else:  # Este es para empleado
     3 - Ver Bandeja de leidos\n\
     4 - Ver Borradores \n\
     0 - Salir\n\n\
-Indique el número de la acción que desea realizar:\n"
+Indique el número de la acción que desea realizar:"
     )
     match input():
         case "1":
             acciones.enviar_mensaje(remitente=user.get_cedula())
         case "2":
-            ba = acciones.bandeja_entrada(
-                mensajes=dict_mensajes,
-                cedula=user.get_cedula(),
-                usuarios=lista_usuarios,
-            )
+            print("\n   BANDEJA DE ENTRADA\n")
             acciones.ver_bandeja(user.get_cedula(), ba)
         case "3":
-            ml = acciones.mensajes_leidos(
-                mensajes=dict_mensajes,
-                cedula=user.get_cedula(),
-                usuarios=lista_usuarios,
-            )
+            print("\n   MENSAJES LEÍDOS\n")
             acciones.ver_bandeja(user.get_cedula(), ml)
         case "4":
-            b = acciones.bandeja_borradores(
-                mensajes=dict_mensajes,
-                cedula=user.get_cedula(),
-                usuarios=lista_usuarios,
-            )
+            print("\n   BORRADORES\n")
             acciones.ver_bandeja(user.get_cedula(), b)
         case "0":
             quit()

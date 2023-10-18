@@ -92,36 +92,41 @@ class Usuario:
         }
 
     def __str__(self):
-        return f"{self.nombre} {self.contrasena} {self.cedula}"
+        return f"\n\
+USUARIO\n\
+    Nombre: {self.nombre}\n\
+    Contraseña: {self.contrasena}\n\
+    Cédula: {self.cedula}\n"
 
 
 class Mensaje:
     def __init__(
         self,
-        remitente=None,
         destinatario=None,
+        tipo=None,
+        remitente=None,
         fecha=None,
         hora=None,
         asunto=None,
         cuerpo=None,
-        tipo=None,
     ):
-        self.remitente = remitente
         self.destinatario = destinatario
+        self.tipo = tipo
+        self.remitente = remitente
         self.fecha = fecha
         self.hora = hora
         self.asunto = asunto
         self.cuerpo = cuerpo
-        self.tipo = tipo
 
-    def set_tipo(self, tipo="B"):
-        self.tipo = tipo
+    # GETTERS
+    def get_destinatario(self):
+        return self.destinatario
+    
+    def get_tipo(self):
+        return self.tipo
 
     def get_remitente(self):
         return self.remitente
-
-    def get_destinatario(self):
-        return self.destinatario
 
     def get_fecha(self):
         return self.fecha
@@ -134,12 +139,16 @@ class Mensaje:
 
     def get_cuerpo(self):
         return self.cuerpo
+    
+    # SETTERS
+    def set_destinatario(self, destinatario):
+        self.destinatario = destinatario
+    
+    def set_tipo(self, tipo="B"):
+        self.tipo = tipo
 
     def set_remitente(self, remitente):
         self.remitente = remitente
-
-    def set_destinatario(self, destinatario):
-        self.destinatario = destinatario
 
     def set_fecha(self, fecha):
         self.fecha = fecha
@@ -166,7 +175,7 @@ class Mensaje:
         }
 
     def __str__(self):
-        return f'    De: {self.remitente}\n\
+        return f'\n    De: {self.remitente}\n\
     Enviado a las {self.hora} del {self.fecha}\n\n\
     Asunto: {self.asunto}\n\n\n\
-    "{self.cuerpo}"'
+    "{self.cuerpo}"\n'
