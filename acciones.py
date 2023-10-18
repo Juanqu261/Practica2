@@ -72,6 +72,32 @@ def login(lista: DoubleList) -> Usuario:
         print("\n*Error en la Cédula o Contraseña ingresadas. Por favor inténtelo de nuevo.")
         logged_in = False
 
+def crear_usuario(lista: DoubleList):
+    print("\n\nIndique la cedula del nuevo empleado: ")
+    cedula = input()
+    print("\nIndique el nombre del nuevo empleado: ")
+    nombre = input()
+    print("\nIndique la fecha de nacimiento del nuevo empleado: ")
+    fecha_nac = input()
+    print("\nIndique la ciudad de nacimiento del nuevo empleado: ")
+    ciudad = input()
+    print("\nIndique el celular del nuevo empleado: ")
+    celular = input()
+    print("\nIndique email del nuevo empleado: ")
+    email = input()
+    print("\nIndique la direccion del nuevo empleado: ")
+    direccion = input()
+    print("\nIndique la contraseña del nuevo empleado: ")
+    contrasena = input()
+    print("\nIndique el cargo del nuevo empleado: ")
+    cargo = input()
+
+    user = Usuario(
+        cedula, nombre, fecha_nac, ciudad, celular, email, direccion,
+        contrasena, cargo
+    )
+    lista.add_last(user)
+    print("\n\nUsuario creado con exito.")
 
 def cambiar_contrasena(lista: DoubleList):
     print("\n\nIndique la cedula del empleado: ")

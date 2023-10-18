@@ -58,7 +58,7 @@ Indique el número de la acción que desea realizar:\n"
             print("\n   BORRADORES\n")
             acciones.ver_bandeja(user.get_cedula(), b)
         case "5":
-            pass
+            acciones.crear_usuario(lista_usuarios)
         case "6":
             acciones.cambiar_contrasena(lista_usuarios)
         case "7":
