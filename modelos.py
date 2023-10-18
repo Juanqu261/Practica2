@@ -78,6 +78,19 @@ class Usuario:
     def es_admin(self) -> bool:
         return True if self.cargo == "administrador" else False
 
+    def __dict__(self):
+        return {
+            f"{self.cedula}": {
+                "cedula": self.cedula,
+                "nombre": self.nombre,
+                "fecha_de_nacimiento": self.fecha_nacimiento,
+                "ciudad": self.ciudad,
+                "celular": self.celular,
+                "email": self.email,
+                "direccion": self.direccion,
+            }
+        }
+
     def __str__(self):
         return f"{self.nombre} {self.contrasena} {self.cedula}"
 
