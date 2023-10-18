@@ -34,23 +34,22 @@ ba, ml, b = acciones.generar_bandejas(
 )
 
 # Mostrar Acciones que puede hacer el usuario
-print(
-        "Acciones:\n\n\
+print("Acciones:\n\n\
     0 - Salir\n\
     1 - Enviar Mensaje (FALTA)\n\
     2 - Ver Bandeja de Entrada\n\
         (Falla cuando hay 1 mensaje)\n\
     3 - Ver Mensajes Leídos\n\
-    4 - Ver Borradores"
-)
+    4 - Ver Borradores")
+
 if (user.es_admin()):
-    print(
-    "5 - Crear usuario \n\
+    print("\
+    5 - Crear usuario \n\
     6 - Cambiar contraseña de un empleado\n\
     7 - Eliminar empleado\n\
-    0 - Salir\n\n\
-Indique el número de la acción que desea realizar:\n"
-)
+    0 - Salir")
+
+print("\nIndique el número de la acción que desea realizar:\n")
 
 # Realizar Acción escogida
 match input():
