@@ -26,67 +26,63 @@ print("Bienvenido/a al Sistema de Mensajería")
 user = acciones.login(lista_usuarios)
 
 # Generación de las estructuras de datos con los mensajes
+# BA: DoubleList, ML: Queue, B: Stack
 ba, ml, b = acciones.generar_bandejas(
     mensajes=dict_mensajes,
     cedula=user.get_cedula(),
     usuarios=lista_usuarios
 )
-# Realizar acción escogida
-if user.es_admin():
-    print(
+
+# Mostrar Acciones que puede hacer el usuario
+print(
         "Acciones:\n\n\
-    1 - Enviar Mensaje\n\
-    2 - Ver Bandeja de entrada\n\
-    3 - Ver Bandeja de leidos\n\
-    4 - Ver Borradores \n\
-    5 - Crear usuario \n\
+    0 - Salir\n\
+    1 - Enviar Mensaje (FALTA)\n\
+    2 - Ver Bandeja de Entrada\n\
+        (Falla cuando hay 1 mensaje)\n\
+    3 - Ver Mensajes Leídos\n\
+    4 - Ver Borradores"
+)
+if (user.es_admin()):
+    print(
+    "5 - Crear usuario \n\
     6 - Cambiar contraseña de un empleado\n\
     7 - Eliminar empleado\n\
     0 - Salir\n\n\
 Indique el número de la acción que desea realizar:\n"
-    )
-    match input():
-        case "1":
-            acciones.enviar_mensaje(remitente=user.get_cedula())
-        case "2":
-            print("\n   BANDEJA DE ENTRADA\n")
-            acciones.ver_bandeja(user.get_cedula(), ba)
-        case "3":
-            print("\n   MENSAJES LEÍDOS\n")
-            acciones.ver_bandeja(user.get_cedula(), ml)
-        case "4":
-            print("\n   BORRADORES\n")
-            acciones.ver_bandeja(user.get_cedula(), b)
-        case "5":
-            acciones.crear_usuario(lista_usuarios)
-        case "6":
-            acciones.cambiar_contrasena(lista_usuarios)
-        case "7":
-            acciones.eliminar_usuario(lista_usuarios)
-        case "0":
-            quit()
+)
 
-else:  # Este es para empleado
-    print(
-        "Acciones:\n\n\
-    1 - Enviar Mensaje\n\
-    2 - Ver Bandeja de entrada\n\
-    3 - Ver Mensajes Leídos\n\
-    4 - Ver Borradores \n\
-    0 - Salir\n\n\
-Indique el número de la acción que desea realizar:"
-    )
-    match input():
-        case "1":
-            acciones.enviar_mensaje(remitente=user.get_cedula())
-        case "2":
-            print("\n   BANDEJA DE ENTRADA\n")
-            acciones.ver_bandeja(user.get_cedula(), ba)
-        case "3":
-            print("\n   MENSAJES LEÍDOS\n")
-            acciones.ver_bandeja(user.get_cedula(), ml)
-        case "4":
-            print("\n   BORRADORES\n")
-            acciones.ver_bandeja(user.get_cedula(), b)
-        case "0":
-            quit()
+# Realizar Acción escogida
+match input():
+    case "1":
+        acciones.enviar_mensaje(remitente=user.get_cedula())
+    
+    case "2":
+        acciones.ver_bandeja(user.get_cedula(), ba)
+
+    case "3":
+        acciones.ver_leidos(user.get_cedula(), ml)
+
+    case "4":
+        acciones.ver_borradores(user.get_cedula(), b)
+    
+    case "5":
+        if (user.es_admin()):
+            acciones.crear_usuario(lista_usuarios)
+        else:
+            print("\nFunción fuera de alcance")
+    
+    case "6":
+        if (user.es_admin()):
+            acciones.cambiar_contrasena(lista_usuarios)
+        else:
+            print("\nFunción fuera de alcance")
+    
+    case "7":
+        if (user.es_admin()):
+            acciones.eliminar_usuario(lista_usuarios)
+        else:
+            print("\nFunción fuera de alcance")
+    
+    case "0":
+        quit()

@@ -1,4 +1,4 @@
-from estructuras import DoubleList
+from estructuras import DoubleList, Stack, Queue
 from modelos import Usuario, Mensaje
 from archivos import *
 from datetime import datetime
@@ -184,62 +184,6 @@ def enviar_mensaje(remitente):
             break
 
 
-def ver_bandeja(id: str, ba: DoubleList):
-    """
-    ### Summary:
-        Devuelve formato estilizado de los mensajes del tipo de Bandeja indicado
-    
-    ### Args:
-        id (str): ID del usuario que consulta los mensajes
-        ba (DoubleList): Estructura con el tipo de mensajes que quiere consultar
-        el usuario
-    """
-
-    # Obtención de la bandeja
-    temp = ba.get_first()
-    i = 1
-    while temp != None:
-        if temp.get_data().get_destinatario() == id:
-            mensaje = temp.get_data()
-            print(
-                f"\
-          {mensaje.get_fecha()}\n\
-    {'%02d'%i}    Asunto: {mensaje.get_asunto()}\n\
-          {mensaje.get_remitente()}"
-            )
-
-            print(50 * "-")
-        temp = temp.get_next()
-        i += 1
-    
-    # Continuación
-    if i == 1:
-        print("No tienes mensajes nuevos para leer.")
-    else:
-        print("\n¿Qué mensaje deseas ver?")
-        inx = int(input())
-        temp = ba.get_first()
-        for k in range(inx - 1):
-            temp = temp.get_next()
-        mensaje = temp.get_data()
-        print(mensaje)
-        ba.remove(temp)
-        print(
-            "Opciones:\n\n\
-    1 - Volver a Bandeja\n\
-    2 - Cerrar Sesión\n"
-        )
-
-        match input():
-            case "1":
-                if (ba.get_size() > 0):
-                    ver_bandeja(id, ba)
-                else:
-                    print("No tiene mensajes nuevos para leer.")
-            case "2":
-                quit()
-
-
 def generar_bandejas(mensajes: dict, cedula: str, usuarios: DoubleList) -> DoubleList:
     """
     ### Summary:
@@ -263,10 +207,10 @@ def generar_bandejas(mensajes: dict, cedula: str, usuarios: DoubleList) -> Doubl
     ba = DoubleList()
 
     # Mensajes Leídos
-    ml = DoubleList()
+    ml = Queue()
 
     # Borradores
-    b = DoubleList()
+    b = Stack()
 
     # Obtener los mensajes y añadirlos a su bandeja correspondiente
     for msg in mensajes[cedula]:
@@ -296,8 +240,111 @@ def generar_bandejas(mensajes: dict, cedula: str, usuarios: DoubleList) -> Doubl
             case "BA":
                 ba.add_last(mensaje)
             case "ML":
-                ml.add_last(mensaje)
+                ml.enqueue(mensaje)
             case "B":
-                b.add_last(mensaje)
+                b.push(mensaje)
         
     return ba, ml, b
+
+
+def ver_bandeja(id: str, ba: DoubleList):
+    """
+    ### Summary:
+        Devuelve formato estilizado de los mensajes del tipo de Bandeja indicado
+    
+    ### Args:
+        ID: ID del usuario que consulta los mensajes
+        BA: Estructura con el tipo de mensajes que quiere consultar
+        el usuario
+    """
+
+    if (ba.is_empty()):
+        print("No tiene mensajes nuevos para leer.")
+    else:
+        # Obtención de la bandeja
+        temp = ba.get_first()
+        i = 1
+        while temp != None:
+            if temp.get_data().get_destinatario() == id:
+                mensaje = temp.get_data()
+                print(
+                    f"\
+            {mensaje.get_fecha()}\n\
+        {'%02d'%i}    Asunto: {mensaje.get_asunto()}\n\
+            {mensaje.get_remitente()}"
+                )
+
+                print(50 * "-")
+            temp = temp.get_next()
+            i += 1
+        
+        # Continuación
+        if i == 1:
+            print("No tienes mensajes nuevos para leer.")
+        else:
+            print("\n¿Qué mensaje deseas ver?")
+            inx = int(input())
+            temp = ba.get_first()
+            for k in range(inx - 1):
+                temp = temp.get_next()
+            mensaje = temp.get_data()
+            print(mensaje)
+            ba.remove(temp)
+            print(
+                "Opciones:\n\n\
+        1 - Volver a Bandeja\n\
+        2 - Cerrar Sesión\n"
+            )
+
+            match input():
+                case "1":
+                    if (ba.get_size() > 0):
+                        ver_bandeja(id, ba)
+                    else:
+                        print("No tiene mensajes nuevos para leer.")
+                case "2":
+                    quit()
+
+
+def ver_leidos(id: str, ml: Queue):
+    if (ml.is_empty()):
+        print("No has leído ningún mensaje.")
+    else:
+        print("\n   MENSAJES LEÍDOS\n")
+        print("Mensaje leído más antiguo:\n")
+        print(ml.first())
+
+        print("¿Qué deseas hacer?\n\n\
+1 - Ver Siguiente Mensaje Leído\n\
+2 - Cerrar Sesión\n")
+        match input():
+            case "1":
+                ml.dequeue()
+                ver_leidos(id, ml)
+            case "2":
+                quit()
+
+
+def ver_borradores(id: str, b: Stack):
+    if (b.is_empty()):
+        print("No tienes borradores guardados.")
+    else:
+        print("\n   BORRADORES\n")
+        print("Borrador más reciente:\n")
+        print(b.top())
+        print(
+            "¿Qué deseas hacer con este borrador?\n\n\
+    1 - Enviar\n\
+    2 - Descartar\n\
+    3 - Cerrar Sesión\n"
+        )
+        
+        match input():
+            case "1":
+                pass
+            case "2":
+                b.pop()
+            case "3":
+                quit()
+        
+        ver_borradores(id, b)
