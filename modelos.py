@@ -1,5 +1,6 @@
 """Contiene las clases Usuario y Mensaje"""
 
+
 class Usuario:
     def __init__(
         self,
@@ -80,6 +81,14 @@ class Usuario:
     def es_admin(self) -> bool:
         return True if self.cargo == "administrador" else False
 
+    def set_bandejas(self, entrada, leidos, borrador):
+        self.ba = entrada
+        self.ml = leidos
+        self.b = borrador
+
+    def get_bandejas(self):
+        return self.ba, self.ml, self.b
+
     def __dict__(self):
         return {
             f"{self.cedula}": {
@@ -123,7 +132,7 @@ class Mensaje:
     # GETTERS
     def get_destinatario(self):
         return self.destinatario
-    
+
     def get_tipo(self):
         return self.tipo
 
@@ -141,11 +150,11 @@ class Mensaje:
 
     def get_cuerpo(self):
         return self.cuerpo
-    
+
     # SETTERS
     def set_destinatario(self, destinatario):
         self.destinatario = destinatario
-    
+
     def set_tipo(self, tipo="B"):
         self.tipo = tipo
 
@@ -166,14 +175,12 @@ class Mensaje:
 
     def __dict__(self):
         return {
-            f"{self.remitente} {self.fecha} {self.hora}": {
-                "tipo": self.tipo,
-                "remitente": self.remitente,
-                "fecha": self.fecha,
-                "hora": self.hora,
-                "asunto": self.asunto,
-                "cuerpo": self.cuerpo,
-            }
+            "tipo": self.tipo,
+            "remitente": self.remitente,
+            "fecha": self.fecha,
+            "hora": self.hora,
+            "asunto": self.asunto,
+            "cuerpo": self.cuerpo,
         }
 
     def __str__(self):
