@@ -139,10 +139,6 @@ def eliminar_usuario(lista: DoubleList):
         temp = temp.get_next()
 
 # ------------------------------ Manejo de mensajes ------------------------------ #
-# Hacer this
-def ver_bandeja_secuencial():
-    pass
-
 # INCOMPLETA
 def enviar_mensaje(remitente):
     remitente = remitente
