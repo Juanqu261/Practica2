@@ -236,7 +236,7 @@ def generar_bandejas(mensajes: dict, cedula: str, usuarios: DoubleList) -> any:
         bandeja = mensaje["tipo"]
 
         # Búsqueda del nombre del remitente
-        # remitente = ""
+        remitente = ""
         temp = usuarios.get_first()
         while temp.get_next() != None:
             if temp.get_data().get_cedula() == mensaje["remitente"]:

@@ -222,13 +222,13 @@ class DoubleList:
             self.size += 1
 
     # EXTRAS
-    def as_pylist(self):
-        new_list = []
-        temp = self.get_first()
-        while temp != None:
-            new_list.append(temp.get_data())
-            temp = temp.get_next()
-        return new_list
+    # def as_pylist(self):
+    #     new_list = []
+    #     temp = self.get_first()
+    #     while temp != None:
+    #         new_list.append(temp.get_data())
+    #         temp = temp.get_next()
+    #     return new_list
 
 
 class Stack:

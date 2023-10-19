@@ -1,5 +1,5 @@
 """Contiene las clases Usuario y Mensaje"""
-
+import estructuras
 
 class Usuario:
     def __init__(
@@ -23,9 +23,9 @@ class Usuario:
         self.direccion = direccion
         self.contrasena = contrasena
         self.cargo = cargo
-        self.ba = None
-        self.ml = None
-        self.b = None
+        self.ba = estructuras.DoubleList()
+        self.ml = estructuras.Queue()
+        self.b = estructuras.Stack()
 
     def get_cedula(self):
         return self.cedula
