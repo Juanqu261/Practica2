@@ -13,19 +13,19 @@
 # Parte 3: Implementación sistema de mensajería empleando listas, pilas y colas
 
 - [x] Leer 'empleados.txt'
-- [ ] Cargar en 'empleados.txt'
+- [x] Cargar en 'empleados.txt'
 - [x] Login
-- [ ] Admin:
+- [x] Admin:
   - [x] Agregar usuario
   - [x] Cambiar contrasenas
   - [x] Eliminar empleado
-  - [ ] Guardar cambios en el archivo (al final)
+  - [x] Guardar cambios en el archivo (al final)
 - [ ] Enviar mensaje
-- [ ] Recibir mensaje
-- [ ] Guardar cambios en el archivo
-- [ ] Bandeja de entrada con mensajes **NO** leidos, al consultar por consola esta debe presentar la fecha de recepción, el titulo del mensaje y el nombre de la persona que lo envió. Adicionalmente, debe permitir seleccionar cual mensaje se desea leer (tip: se recomienda implementar la bandeja de entrada como una lista doble).
+- [x] Recibir mensaje
+- [x] Guardar cambios en el archivo
+- [x] Bandeja de entrada con mensajes **NO** leidos, al consultar por consola esta debe presentar la fecha de recepción, el titulo del mensaje y el nombre de la persona que lo envió. Adicionalmente, debe permitir seleccionar cual mensaje se desea leer (tip: se recomienda implementar la bandeja de entrada como una lista doble).
 - [ ] Una vez se lee un mensaje se elimina de la bandeja de entrada y pasa a la de leidos, estos se pueden consultar de forma secuencial iniciando en el mas antiguo (Se recomienda usar colas)
-- [ ] Cuando un usuario quiere redactar un nuevo mensaje, por consola, se debe pedir:
+- Cuando un usuario quiere redactar un nuevo mensaje, por consola, se debe pedir:
   - [x] Cedula del usuario al que se envía el mensaje
   - [x] Título del mensaje
   - [x] Mensaje
@@ -35,7 +35,7 @@
 - [ ] Al almacenar como borrador se guarda en una carpeta donde solo se puede acceder al ultimo borrador.
 - [ ] Al descartar un mensaje se elimina del sistema
 - [ ] Al enviar un mensaje el sistema lo agrega a la bandeja de entrada del destinatario
-- [ ] Los mensajes en la bandeja de entrada, mensajes leidos y borradores de cada usuario se almacenan en archivos de text, denominados por el numero de cedula del empleado, seguido por las letras BA (bandeja de entrada), ML (mensajes leidos), B (borradores)
+- [x] Los mensajes en la bandeja de entrada, mensajes leidos y borradores de cada usuario se almacenan en archivos de text, denominados por el numero de cedula del empleado, seguido por las letras BA (bandeja de entrada), ML (mensajes leidos), B (borradores)
 
 # Test Sugeridos:
 

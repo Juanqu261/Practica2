@@ -2,7 +2,6 @@ from estructuras import DoubleList, Stack, Queue
 from modelos import Usuario, Mensaje
 from archivos import *
 from datetime import datetime
-from algoritmos import lista_cola, lista_pila
 
 # ------------------------------ Manejo de usuarios ------------------------------ #
 
@@ -144,7 +143,7 @@ def eliminar_usuario(lista: DoubleList):
 def ver_bandeja_secuencial():
     pass
 
-
+# INCOMPLETA
 def enviar_mensaje(remitente):
     remitente = remitente
     destinatario = input("Ingrese la cedula del destinatario:\n")
@@ -247,7 +246,7 @@ def generar_bandejas(mensajes: dict, cedula: str, usuarios: DoubleList) -> Doubl
     return ba, ml, b
 
 
-def ver_bandeja(id: str, ba: DoubleList):
+def ver_bandeja(id: str, ba: DoubleList, ml: Queue):
     """
     ### Summary:
         Devuelve formato estilizado de los mensajes del tipo de Bandeja indicado
@@ -280,15 +279,21 @@ def ver_bandeja(id: str, ba: DoubleList):
             temp = temp.get_next()
             i += 1
         
-        # Continuación
+        # Indicar qué mensaje ver
         print("\n¿Qué mensaje desea ver? (indique su numeral)")
         inx = int(input())
         temp = ba.get_first()
         for k in range(inx - 1):
             temp = temp.get_next()
+        
+        # Mostrar el mensaje en pantalla
         mensaje = temp.get_data()
         print(mensaje)
+
+        # Pasar de Bandeja a Leídos
         ba.remove(temp)
+        ml.enqueue(mensaje)
+
         print(
             "Opciones:\n\n\
     1 - Volver a Bandeja\n\
@@ -299,7 +304,7 @@ def ver_bandeja(id: str, ba: DoubleList):
             case "1":
                 ver_bandeja(id, ba)
             case "2":
-                quit()
+                pass
 
 
 def ver_leidos(id: str, ml: Queue):
@@ -337,13 +342,13 @@ def ver_borradores(id: str, b: Stack):
         
         match input():
             case "1":
-                pass
+                # Enviar Mensaje
+                ver_borradores(id, b)
             case "2":
                 b.pop()
+                ver_borradores(id, b)
             case "3":
                 pass
-        
-        ver_borradores(id, b)
 
 
 def guardar_cambios(lista: DoubleList):
@@ -396,3 +401,7 @@ def guardar_cambios(lista: DoubleList):
         temp = temp.get_next()
     
     return dict_empleados, dict_password
+
+
+def guardar_mensajes(lista: DoubleList):
+    pass
