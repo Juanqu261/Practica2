@@ -15,6 +15,7 @@ dict_credenciales = archivos.leer_json("password.json")
 # Extraer la información de los diccionarios en una DoubleList
 lista_usuarios = acciones.cargar_usuarios(dict_empleados, dict_credenciales)
 
+
 # Obtener Mensajes
 dict_mensajes = archivos.leer_json("mensajes.json")
 
@@ -27,11 +28,16 @@ user = acciones.login(lista_usuarios)
 
 # Generación de las estructuras de datos con los mensajes
 # BA: DoubleList, ML: Queue, B: Stack
-ba, ml, b = acciones.generar_bandejas(
-    mensajes=dict_mensajes, cedula=user.get_cedula(), usuarios=lista_usuarios
-)
 
-user.set_bandejas(entrada=ba, leidos=ml, borrador=b)
+temp = lista_usuarios.get_first()
+while temp != None:
+    data = temp.get_data()
+    ba, ml, b = acciones.generar_bandejas(
+        mensajes=dict_mensajes, cedula=data.get_cedula(), usuarios=lista_usuarios
+    )
+    data.set_bandejas(ba, ml, b)
+    temp = temp.get_next()
+
 
 # Mostrar Acciones que puede hacer el usuario
 print(
@@ -39,7 +45,6 @@ print(
     0 - Salir\n\
     1 - Enviar Mensaje (FALTA)\n\
     2 - Ver Bandeja de Entrada\n\
-        (Falla cuando hay 1 mensaje)\n\
     3 - Ver Mensajes Leídos\n\
     4 - Ver Borradores"
 )
@@ -63,13 +68,13 @@ match input():
 
     # Enviar Mensaje
     case "1":
-        acciones.enviar_mensaje(
+        acciones.crear_mensaje(
             remitente=user, mensajes=dict_mensajes, usuarios=lista_usuarios
         )
 
     # Ver Bandeja de Entrada
     case "2":
-        acciones.ver_bandeja(user.get_cedula(), ba)
+        acciones.ver_bandeja(user.get_cedula(), ba, ml)
 
     # Ver Mensajes Leídos
     case "3":
@@ -110,4 +115,16 @@ archivos.guardar_json("empleados1.json", empleados)
 archivos.guardar_json("password1.json", password)
 
 # mensajes.json
-archivos.guardar_json("mensajes.json", mensajes)
+archivos.guardar_json("mensajes1.json", mensajes)
+
+temp = lista_usuarios.get_first()
+
+while temp != None:
+    data = temp.get_data()
+    ba, ml, b = acciones.generar_bandejas(
+        mensajes=dict_mensajes, cedula=data.get_cedula(), usuarios=lista_usuarios
+    )
+    data.set_bandejas(ba, ml, b)
+    entrada, leidos, borradores = data.get_bandejas()
+    print([entrada.__str__() for entrada in entrada.as_pylist()])
+    temp = temp.get_next()

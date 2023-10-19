@@ -148,15 +148,15 @@ def eliminar_usuario(lista: DoubleList):
 
 # ------------------------------ Manejo de mensajes ------------------------------ #
 # INCOMPLETA
-def enviar_mensaje(remitente: Usuario, mensajes: dict, usuarios: DoubleList):
-    remitente = remitente.get_cedula()
+def crear_mensaje(remitente: Usuario, mensajes: dict, usuarios: DoubleList):
+    cedula = remitente.get_cedula()
     destinatario = input("Ingrese la cedula del destinatario:\n")
     fecha = datetime.now().strftime("%Y/%m/%d")
     hora = datetime.now().strftime("%H:%M:%S")
     asunto = input("Ingrese el asunto del mensaje:\n")
     cuerpo = input("Ingrese el mensaje:\n")
     mensaje = Mensaje(
-        remitente=remitente,
+        remitente=cedula,
         destinatario=destinatario,
         fecha=fecha,
         hora=hora,
@@ -175,11 +175,12 @@ def enviar_mensaje(remitente: Usuario, mensajes: dict, usuarios: DoubleList):
         opcion = input()
         if opcion == "1":
             # Hace push a la stack
+            mensaje.set_tipo("B")
             remitente.b.push(mensaje)
             print("Mensaje guardado en borradores")
             break
         elif opcion == "2":
-            print(enviar_mensaje(mensaje, mensajes, usuarios))
+            print(enviar_mensaje(mensaje, usuarios))
             break
         elif opcion == "3":
             print("Mensaje descartado")
@@ -188,13 +189,16 @@ def enviar_mensaje(remitente: Usuario, mensajes: dict, usuarios: DoubleList):
             print("Opcion invalida")
 
 
-def enviar_mensaje(mensaje: Mensaje, mensajes: dict, usuarios: DoubleList):
+def enviar_mensaje(mensaje: Mensaje, usuarios: DoubleList):
     destinatario = mensaje.destinatario
-    if destinatario not in mensajes:
-        return f"Usuario {destinatario} no fue encontrado"
-
-    ba, ml, b = generar_bandejas(mensajes, destinatario, usuarios)
-    ba.add_last(mensaje)
+    temp = usuarios.get_first()
+    while temp != None:
+        if temp.get_data().get_cedula() == destinatario:
+            usuario = temp.get_data()
+            break
+        temp = temp.get_next()
+    mensaje.set_tipo("BA")
+    usuario.ba.add_first(mensaje)
     return "Mensaje enviado con exito"
 
 
@@ -402,33 +406,6 @@ def guardar_cambios(lista: DoubleList):
         contrasena = usuario.get_contrasena()
         cargo = usuario.get_cargo()
 
-        # Obetener datos de la bandeja
-        ba, ml, b = usuario.get_bandejas()
-        dict_temp = {}
-
-        # Bandeja de entrada
-        entrada = ba.get_first()
-        while mensaje != None:
-            info = mensaje.get_data()
-            dict_temp[f"{info.remitente} {info.fecha} {info.hora}"] = info.__str__()
-            mensaje = entrada.get_next()
-
-        # Leidos
-        leido = ml.top()
-        while mensaje != None:
-            dict_temp[
-                f"{mensaje.remitente} {mensaje.fecha} {mensaje.hora}"
-            ] = mensaje.__str__()
-            mensaje = borrador.pop()
-
-        # Borradores
-        borrador = b.first()
-        while mensaje != None:
-            dict_temp[
-                f"{mensaje.remitente} {mensaje.fecha} {mensaje.hora}"
-            ] = mensaje.__str__()
-            mensaje = borrador.dequeue()
-
         # Generar diccionario para empleados.json
         dict_empleados[cedula] = {
             "cedula": cedula,
@@ -443,15 +420,15 @@ def guardar_cambios(lista: DoubleList):
         # Generar diccionario para password.json
         dict_password[cedula] = {"password": contrasena, "cargo": cargo}
 
-        # Generar diccionario para bandejas.json
-        dict_bandejas[cedula] = dict_temp
+        # Generar diccionario para bandejas.json]
+        dict_bandejas[cedula] = guardar_mensajes(usuario)
 
         temp = temp.get_next()
 
     return dict_empleados, dict_password, dict_bandejas
 
 
-def guardar_mensajes(lista: DoubleList):
+def guardar_mensajes(usuario: Usuario):
     """
     ## Summary:
         Guarda todos los cambios en las estructuras de datos
@@ -464,35 +441,32 @@ def guardar_mensajes(lista: DoubleList):
         - `dict_password (dict)`
     """
 
-    dict_mensajes = {}
+    # Obtener datos de la bandeja
+    ba, ml, b = usuario.get_bandejas()
+    dict_bandejas = {}
+    dict_temp = {}
 
-    temp = lista.get_first()
-    while temp != None:
-        # Obtener objeto Usuario
-        usuario = temp.get_data()
+    # Bandeja de entrada
+    entrada = ba.get_first()
+    while entrada != None:
+        info = entrada.get_data()
+        dict_temp[f"{info.remitente} {info.fecha} {info.hora}"] = info.__dict__()
+        entrada = entrada.get_next()
 
-        # Obtener datos del usuario
-        cedula = usuario.get_cedula()
-        nombre = usuario.get_nombre()
-        fecha = usuario.get_fecha_nacimiento()
-        ciudad = usuario.get_ciudad()
-        celular = usuario.get_celular()
-        email = usuario.get_email()
-        direccion = usuario.get_direccion()
-        contrasena = usuario.get_contrasena()
-        cargo = usuario.get_cargo()
+    # Leidos
+    leido = ml.first()
+    while leido != None:
+        dict_temp[f"{leido.remitente} {leido.fecha} {leido.hora}"] = leido.__str__()
+        ml.dequeue()
+        leido = ml.first()
 
-        # Generar diccionario para empleados.json
-        dict_mensajes[cedula] = {
-            "cedula": cedula,
-            "nombre": nombre,
-            "fecha_de_nacimiento": fecha,
-            "ciudad": ciudad,
-            "celular": celular,
-            "email": email,
-            "direccion": direccion,
-        }
+    # Borradores
+    borrador = b.top()
+    while borrador != None:
+        dict_temp[
+            f"{borrador.remitente} {borrador.fecha} {borrador.hora}"
+        ] = borrador.__dict__()
+        b.pop()
+        borrador = b.top()
 
-        temp = temp.get_next()
-
-    return dict_mensajes
+    return dict_temp
