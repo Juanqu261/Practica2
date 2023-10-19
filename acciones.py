@@ -312,6 +312,7 @@ def ver_bandeja(id: str, ba: DoubleList, ml: Queue):
 
         # Pasar de Bandeja a Leídos
         ba.remove(temp)
+        mensaje.set_tipo("ML")
         ml.enqueue(mensaje)
 
         print(
@@ -348,7 +349,7 @@ def ver_leidos(id: str, ml: Queue):
                 pass
 
 
-def ver_borradores(id: str, b: Stack):
+def ver_borradores(id: str, b: Stack, usuarios: DoubleList):
     if b.is_empty():
         print("\nNo tienes borradores guardados.")
     else:
@@ -365,7 +366,8 @@ def ver_borradores(id: str, b: Stack):
         match input():
             case "1":
                 # Enviar Mensaje
-                ver_borradores(id, b)
+                enviar_mensaje(b.top(), usuarios)
+                ver_borradores(id, b, usuarios)
             case "2":
                 b.pop()
                 ver_borradores(id, b)
@@ -456,7 +458,7 @@ def guardar_mensajes(usuario: Usuario):
     # Leidos
     leido = ml.first()
     while leido != None:
-        dict_temp[f"{leido.remitente} {leido.fecha} {leido.hora}"] = leido.__str__()
+        dict_temp[f"{leido.remitente} {leido.fecha} {leido.hora}"] = leido.__dict__()
         ml.dequeue()
         leido = ml.first()
 

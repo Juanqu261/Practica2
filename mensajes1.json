@@ -1,5 +1,13 @@
 {
     "24567898": {
+        "Camila Jimenez aaaa/mm/dd 00:00": {
+            "tipo": "BA",
+            "remitente": "Camila Jimenez",
+            "fecha": "aaaa/mm/dd",
+            "hora": "00:00",
+            "asunto": "---Este es un borrador---",
+            "cuerpo": "-----------------------"
+        },
         "Diego Palacio aaaa/mm/dd 00:00": {
             "tipo": "BA",
             "remitente": "Diego Palacio",
@@ -15,14 +23,6 @@
             "hora": "01:00",
             "asunto": "hola",
             "cuerpo": "jajjaaj"
-        },
-        "Camila Jimenez aaaa/mm/dd 00:00": {
-            "tipo": "B",
-            "remitente": "Camila Jimenez",
-            "fecha": "aaaa/mm/dd",
-            "hora": "00:00",
-            "asunto": "---Este es un borrador---",
-            "cuerpo": "-----------------------"
         }
     },
     "34568910": {},

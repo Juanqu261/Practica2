@@ -2,7 +2,6 @@ import estructuras
 import archivos
 import acciones
 import modelos
-import algoritmos
 
 # ------------------------------ Lectura de Archivos ------------------------------ #
 
@@ -74,15 +73,15 @@ match input():
 
     # Ver Bandeja de Entrada
     case "2":
-        acciones.ver_bandeja(user.get_cedula(), ba, ml)
+        acciones.ver_bandeja(user.get_cedula(), user.ba, user.ml)
 
     # Ver Mensajes Leídos
     case "3":
-        acciones.ver_leidos(user.get_cedula(), ml)
+        acciones.ver_leidos(user.get_cedula(), user.ml)
 
     # Ver Borradores
     case "4":
-        acciones.ver_borradores(user.get_cedula(), b)
+        acciones.ver_borradores(user.get_cedula(), user.b, lista_usuarios)
 
     # Crear Usuario
     case "5":
@@ -117,14 +116,4 @@ archivos.guardar_json("password1.json", password)
 # mensajes.json
 archivos.guardar_json("mensajes1.json", mensajes)
 
-temp = lista_usuarios.get_first()
 
-while temp != None:
-    data = temp.get_data()
-    ba, ml, b = acciones.generar_bandejas(
-        mensajes=dict_mensajes, cedula=data.get_cedula(), usuarios=lista_usuarios
-    )
-    data.set_bandejas(ba, ml, b)
-    entrada, leidos, borradores = data.get_bandejas()
-    print([entrada.__str__() for entrada in entrada.as_pylist()])
-    temp = temp.get_next()
