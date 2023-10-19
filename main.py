@@ -84,4 +84,14 @@ match input():
             print("\nFunción fuera de alcance")
     
     case "0":
-        quit()
+        pass
+
+# ----------------------------- Guardado en Archivos ----------------------------- #
+# Guardar los cambios a las estructuras en diccionarios
+empleados, password = acciones.guardar_cambios(lista_usuarios)
+
+# Guardar los diccionarios en los archivos json
+archivos.guardar_json("empleados1.json", empleados)
+archivos.guardar_json("password1.json", password)
+
+# mensajes.json

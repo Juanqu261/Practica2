@@ -318,7 +318,7 @@ def ver_leidos(id: str, ml: Queue):
                 ml.dequeue()
                 ver_leidos(id, ml)
             case "2":
-                quit()
+                pass
 
 
 def ver_borradores(id: str, b: Stack):
@@ -341,6 +341,58 @@ def ver_borradores(id: str, b: Stack):
             case "2":
                 b.pop()
             case "3":
-                quit()
+                pass
         
         ver_borradores(id, b)
+
+
+def guardar_cambios(lista: DoubleList):
+    """
+    ### Summary:
+        Guarda todos los cambios en las estructuras de datos
+        al correr main, y los devuelve en diccionarios.
+    ### Args:
+        lista (DoubleList): Lista de usuarios en el sistema
+        (con cambios aplicados)
+    ### Returns:
+        dict_empleados, dict_password"""
+    
+    dict_empleados = {}
+    dict_password = {}
+
+    temp = lista.get_first()
+    while (temp != None):
+        # Obtener objeto Usuario
+        usuario = temp.get_data()
+
+        # Obtener datos del usuario
+        cedula = usuario.get_cedula()
+        nombre = usuario.get_nombre()
+        fecha = usuario.get_fecha_nacimiento()
+        ciudad = usuario.get_ciudad()
+        celular = usuario.get_celular()
+        email = usuario.get_email()
+        direccion = usuario.get_direccion()
+        contrasena = usuario.get_contrasena()
+        cargo = usuario.get_cargo()
+
+        # Generar diccionario para empleados.json
+        dict_empleados[cedula] = {
+            "cedula":cedula,
+            "nombre":nombre,
+            "fecha_de_nacimiento":fecha,
+            "ciudad":ciudad,
+            "celular":celular,
+            "email":email,
+            "direccion":direccion
+        }
+
+        # Generar diccionario para password.json
+        dict_password[cedula] = {
+            "password":contrasena,
+            "cargo":cargo
+        }
+        
+        temp = temp.get_next()
+    
+    return dict_empleados, dict_password
