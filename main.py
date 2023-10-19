@@ -110,10 +110,10 @@ match input():
 empleados, password, mensajes = acciones.guardar_cambios(lista_usuarios)
 
 # Guardar los diccionarios en los archivos json
-archivos.guardar_json("empleados1.json", empleados)
-archivos.guardar_json("password1.json", password)
+archivos.guardar_json("empleados.json", empleados)
+archivos.guardar_json("password.json", password)
 
 # mensajes.json
-archivos.guardar_json("mensajes1.json", mensajes)
+archivos.guardar_json("mensajes.json", mensajes)
 
 
