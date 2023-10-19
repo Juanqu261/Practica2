@@ -1,3 +1,5 @@
+"""Contiene las clases Usuario y Mensaje"""
+
 class Usuario:
     def __init__(
         self,

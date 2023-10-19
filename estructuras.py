@@ -1,3 +1,5 @@
+"""Contiene Nodos, Listas, Pilas y Colas"""
+
 class Node:
     def __init__(self, data=None):
         self.data = data
@@ -82,15 +84,6 @@ class List:
             self.size -= 1
 
             return temp.get_data()
-
-    # EXTRAS
-    def as_pylist(self):
-        new_list = []
-        temp = self.get_first()
-        while temp != None:
-            new_list.append(temp.get_data())
-            temp = temp.get_next()
-        return new_list
 
 
 class DoubleNode:

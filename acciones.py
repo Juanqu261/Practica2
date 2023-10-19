@@ -1,3 +1,5 @@
+"""Funciones de la secuencia de la consola"""
+
 from estructuras import DoubleList, Stack, Queue
 from modelos import Usuario, Mensaje
 from archivos import *
@@ -7,13 +9,13 @@ from datetime import datetime
 
 def cargar_usuarios(diccionario_datos: dict, credenciales: dict) -> DoubleList:
     """
-    ### Summary:
+    ## Summary:
         Crea una lista de usuarios(objetos) existentes en el sistema
-    ### Args:
-        diccionario (dict): Diccionario con los datos de los usuarios
-        credenciales (dict): Diccionario con las contraseñas y cargos de los usuarios
-    ### Returns:
-        lista_usuarios_cargados (DoubleList): Usuarios creados
+    ## Args:
+        - `diccionario (dict)`: Diccionario con los datos de los usuarios
+        - `credenciales (dict)`: Diccionario con las contraseñas y cargos de los usuarios
+    ## Returns:
+        - `lista_usuarios_cargados (DoubleList)`: Usuarios creados
     """
     lista_usuarios_cargados = DoubleList()
     for id in diccionario_datos:
@@ -36,12 +38,12 @@ def cargar_usuarios(diccionario_datos: dict, credenciales: dict) -> DoubleList:
 
 def login(lista: DoubleList) -> Usuario:
     """
-    ### Summary:
+    ## Summary:
         Inicia sesión con inputs del usuario para la Cédula y la Contraseña.
-    ### Args:
-        lista (DoubleList): Lista los usuarios existentes
-    ### Returns:
-        user (Usuario):
+    ## Args:
+        - `lista (DoubleList)`: Lista los usuarios existentes
+    ## Returns:
+        - `user (Usuario)`:
     """
 
     logged_in = False
@@ -74,11 +76,10 @@ def login(lista: DoubleList) -> Usuario:
 # Admin
 def crear_usuario(lista: DoubleList):
     """
-    ### Summary:
-        Añade un nuevo usuario con los datos indicados a la lista de usuarios creada
-        en main.
-    ### Args:
-        lista (DoubleList): Lista de usuarios en el sistema
+    ## Summary:
+        Añade un nuevo usuario a la lista de usuarios
+    ## Args:
+        - `lista (DoubleList)`: Lista de usuarios en el sistema
     """
 
     print("\n\nIndique la cedula del nuevo empleado: ")
@@ -181,20 +182,20 @@ def enviar_mensaje(remitente):
 
 def generar_bandejas(mensajes: dict, cedula: str, usuarios: DoubleList) -> DoubleList:
     """
-    ### Summary:
+    ## Summary:
         Crea y retorna a partir de diccionarios las estructuras de datos
         con los 3 tipos de mensajes almacenados en el sistema por el
         usuario con la cédula indicada.
     
-    ### Args:
-        mensajes (dict): Diccionario con todos los mensajes del sistema
-        cedula (str): ID del usuario que consulta los mensajes
-        usuarios (DoubleList): Lista de todos los usuarios en el sistema
+    ## Args:
+        - `mensajes (dict)`: Diccionario con todos los mensajes del sistema
+        - `cedula (str)`: ID del usuario que consulta los mensajes
+        - `usuarios (DoubleList)`: Lista de todos los usuarios en el sistema
     
-    ### Returns:
-        ba (DoubleList): Bandeja de Entrada,
-        ml (DoubleList): Mensajes Leídos,
-        b (DoubleList): Borradores
+    ## Returns:
+        - `ba (DoubleList)`: Bandeja de Entrada,
+        - `ml (DoubleList)`: Mensajes Leídos,
+        - `b (DoubleList)`: Borradores
     """
     
     # Inicialización
@@ -244,13 +245,14 @@ def generar_bandejas(mensajes: dict, cedula: str, usuarios: DoubleList) -> Doubl
 
 def ver_bandeja(id: str, ba: DoubleList, ml: Queue):
     """
-    ### Summary:
+    ## Summary:
         Devuelve formato estilizado de los mensajes del tipo de Bandeja indicado
     
-    ### Args:
-        ID: ID del usuario que consulta los mensajes
-        BA: Estructura con el tipo de mensajes que quiere consultar
+    ## Args:
+        - `id (str)`: Cédula del usuario que consulta los mensajes
+        - `ba (DoubleList)`: Estructura con el tipo de mensajes que quiere consultar
         el usuario
+        - `ml (Queue)`: Estructura de Mensajes Leídos para guardar los mensajes vistos
     """
 
     if (ba.is_empty()):
@@ -349,14 +351,16 @@ def ver_borradores(id: str, b: Stack):
 
 def guardar_cambios(lista: DoubleList):
     """
-    ### Summary:
+    ## Summary:
         Guarda todos los cambios en las estructuras de datos
         al correr main, y los devuelve en diccionarios.
-    ### Args:
-        lista (DoubleList): Lista de usuarios en el sistema
+    ## Args:
+        - `lista (DoubleList)`: Lista de usuarios en el sistema
         (con cambios aplicados)
-    ### Returns:
-        dict_empleados, dict_password"""
+    ## Returns:
+        - `dict_empleados (dict)`,
+        - `dict_password (dict)`
+    """
     
     dict_empleados = {}
     dict_password = {}

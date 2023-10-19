@@ -53,40 +53,49 @@ print("\nIndique el número de la acción que desea realizar:")
 
 # Realizar Acción escogida
 match input():
+    # Salir
+    case "0":
+        pass
+    
+    # Enviar Mensaje
     case "1":
         acciones.enviar_mensaje(remitente=user.get_cedula())
     
+    # Ver Bandeja de Entrada
     case "2":
         acciones.ver_bandeja(user.get_cedula(), ba)
-
+    
+    # Ver Mensajes Leídos
     case "3":
         acciones.ver_leidos(user.get_cedula(), ml)
-
+    
+    # Ver Borradores
     case "4":
         acciones.ver_borradores(user.get_cedula(), b)
     
+    # Crear Usuario
     case "5":
         if (user.es_admin()):
             acciones.crear_usuario(lista_usuarios)
         else:
             print("\nFunción fuera de alcance")
     
+    # Cambiar Contraseña de un empleado
     case "6":
         if (user.es_admin()):
             acciones.cambiar_contrasena(lista_usuarios)
         else:
             print("\nFunción fuera de alcance")
     
+    # Eliminar empleado
     case "7":
         if (user.es_admin()):
             acciones.eliminar_usuario(lista_usuarios)
         else:
             print("\nFunción fuera de alcance")
-    
-    case "0":
-        pass
 
 # ----------------------------- Guardado en Archivos ----------------------------- #
+
 # Guardar los cambios a las estructuras en diccionarios
 empleados, password = acciones.guardar_cambios(lista_usuarios)
 
