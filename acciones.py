@@ -323,7 +323,7 @@ def ver_bandeja(id: str, ba: DoubleList, ml: Queue):
 
         match input():
             case "1":
-                ver_bandeja(id, ba)
+                ver_bandeja(id, ba, ml)
             case "2":
                 pass
 

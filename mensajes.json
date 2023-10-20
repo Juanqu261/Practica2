@@ -8,6 +8,14 @@
             "asunto": "hola",
             "cuerpo": "jajjaaj"
         },
+        " 2023/10/19 23:18:24": {
+            "tipo": "ML",
+            "remitente": "",
+            "fecha": "2023/10/19",
+            "hora": "23:18:24",
+            "asunto": "probanding anding",
+            "cuerpo": "todo bien o k"
+        },
         " aaaa/mm/dd 00:00": {
             "tipo": "B",
             "remitente": "",
@@ -19,9 +27,9 @@
     },
     "34568910": {},
     "2345902": {
-        "24567898 2023/10/19 13:49:01": {
+        " 2023/10/19 13:49:01": {
             "tipo": "BA",
-            "remitente": "24567898",
+            "remitente": "",
             "fecha": "2023/10/19",
             "hora": "13:49:01",
             "asunto": "asunto1",
@@ -40,13 +48,13 @@
         }
     },
     "1015": {
-        " 2023/10/19 10:53:18": {
-            "tipo": "B",
+        " 2023/10/19 23:16:57": {
+            "tipo": "BA",
             "remitente": "",
             "fecha": "2023/10/19",
-            "hora": "10:53:18",
-            "asunto": "prueba2",
-            "cuerpo": "esta es la segunda prueba"
+            "hora": "23:16:57",
+            "asunto": "pruebita",
+            "cuerpo": "mensaje de pruebita"
         },
         " 2023/10/19 10:53:43": {
             "tipo": "B",
@@ -55,6 +63,14 @@
             "hora": "10:53:43",
             "asunto": "prueba3",
             "cuerpo": "ultima prueba"
+        },
+        " 2023/10/19 10:53:18": {
+            "tipo": "B",
+            "remitente": "",
+            "fecha": "2023/10/19",
+            "hora": "10:53:18",
+            "asunto": "prueba2",
+            "cuerpo": "esta es la segunda prueba"
         }
     }
 }
