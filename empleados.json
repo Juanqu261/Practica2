@@ -52,5 +52,14 @@
         "celular": "c",
         "email": "d",
         "direccion": "e"
+    },
+    "1023": {
+        "cedula": "1023",
+        "nombre": "1023",
+        "fecha_de_nacimiento": "20/06/2004",
+        "ciudad": "Medellin",
+        "celular": "300",
+        "email": "semesam",
+        "direccion": "cra 80a"
     }
 }

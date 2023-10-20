@@ -1,6 +1,7 @@
 """Contiene las clases Usuario y Mensaje"""
 import estructuras
 
+
 class Usuario:
     def __init__(
         self,
@@ -187,7 +188,7 @@ class Mensaje:
         }
 
     def __str__(self):
-        return f'\n    De: {self.remitente}\n\
+        return f'\n    De: {self.remitente} \t Para: {self.destinatario}\n\
     Enviado a las {self.hora} del {self.fecha}\n\n\
     Asunto: {self.asunto}\n\n\n\
     "{self.cuerpo}"\n'

@@ -48,6 +48,22 @@
         }
     },
     "1015": {
+        " 2023/10/19 23:27:55": {
+            "tipo": "BA",
+            "remitente": "",
+            "fecha": "2023/10/19",
+            "hora": "23:27:55",
+            "asunto": "envio desde borrador",
+            "cuerpo": "deberia funcionar"
+        },
+        " 2023/10/19 10:53:43": {
+            "tipo": "BA",
+            "remitente": "",
+            "fecha": "2023/10/19",
+            "hora": "10:53:43",
+            "asunto": "prueba3",
+            "cuerpo": "ultima prueba"
+        },
         " 2023/10/19 23:16:57": {
             "tipo": "BA",
             "remitente": "",
@@ -55,22 +71,56 @@
             "hora": "23:16:57",
             "asunto": "pruebita",
             "cuerpo": "mensaje de pruebita"
+        }
+    },
+    "1023": {
+        " 2023/10/20 00:00:37": {
+            "tipo": "BA",
+            "remitente": "",
+            "fecha": "2023/10/20",
+            "hora": "00:00:37",
+            "asunto": "nose",
+            "cuerpo": "nose"
         },
-        " 2023/10/19 10:53:43": {
-            "tipo": "B",
+        " 2023/10/19 23:57:25": {
+            "tipo": "BA",
             "remitente": "",
             "fecha": "2023/10/19",
-            "hora": "10:53:43",
-            "asunto": "prueba3",
-            "cuerpo": "ultima prueba"
+            "hora": "23:57:25",
+            "asunto": "test",
+            "cuerpo": "testeando"
         },
-        " 2023/10/19 10:53:18": {
-            "tipo": "B",
+        " 2023/10/19 23:51:28": {
+            "tipo": "BA",
             "remitente": "",
             "fecha": "2023/10/19",
-            "hora": "10:53:18",
-            "asunto": "prueba2",
-            "cuerpo": "esta es la segunda prueba"
+            "hora": "23:51:28",
+            "asunto": "envio desde el borrador",
+            "cuerpo": "intento 999"
+        },
+        " 2023/10/19 23:45:34": {
+            "tipo": "ML",
+            "remitente": "",
+            "fecha": "2023/10/19",
+            "hora": "23:45:34",
+            "asunto": "ojala se envie",
+            "cuerpo": "esperemos que si"
+        },
+        " 2023/10/20 00:03:40": {
+            "tipo": "B",
+            "remitente": "",
+            "fecha": "2023/10/20",
+            "hora": "00:03:40",
+            "asunto": "test1",
+            "cuerpo": "testing"
+        },
+        " 2023/10/20 00:09:11": {
+            "tipo": "B",
+            "remitente": "",
+            "fecha": "2023/10/20",
+            "hora": "00:09:11",
+            "asunto": "test2",
+            "cuerpo": "testing"
         }
     }
 }

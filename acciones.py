@@ -155,6 +155,9 @@ def crear_mensaje(remitente: Usuario, mensajes: dict, usuarios: DoubleList):
     hora = datetime.now().strftime("%H:%M:%S")
     asunto = input("Ingrese el asunto del mensaje:\n")
     cuerpo = input("Ingrese el mensaje:\n")
+    print(
+        f"destinatario = {destinatario}, remitente = {cedula} o como metodo {remitente.get_cedula()}"
+    )
     mensaje = Mensaje(
         remitente=cedula,
         destinatario=destinatario,
@@ -163,6 +166,7 @@ def crear_mensaje(remitente: Usuario, mensajes: dict, usuarios: DoubleList):
         asunto=asunto,
         cuerpo=cuerpo,
     )
+    print(mensaje.destinatario)
 
     print(
         "Opciones:\n\
@@ -191,6 +195,9 @@ def crear_mensaje(remitente: Usuario, mensajes: dict, usuarios: DoubleList):
 
 def enviar_mensaje(mensaje: Mensaje, usuarios: DoubleList):
     destinatario = mensaje.destinatario
+    print(
+        f"destino {mensaje.destinatario} | {mensaje.get_destinatario()}, remitente {mensaje.remitente} | {mensaje.get_destinatario()}"
+    )
     temp = usuarios.get_first()
     while temp != None:
         if temp.get_data().get_cedula() == destinatario:
@@ -353,9 +360,10 @@ def ver_borradores(id: str, b: Stack, usuarios: DoubleList):
     if b.is_empty():
         print("\nNo tienes borradores guardados.")
     else:
+        mensaje = b.top()
         print("\n    BORRADORES\n")
         print("Borrador más reciente:\n")
-        print(b.top())
+        print(mensaje)
         print(
             "¿Qué deseas hacer con este borrador?\n\n\
     1 - Enviar (FALTA)\n\
@@ -366,11 +374,12 @@ def ver_borradores(id: str, b: Stack, usuarios: DoubleList):
         match input():
             case "1":
                 # Enviar Mensaje
-                enviar_mensaje(b.top(), usuarios)
+                print(enviar_mensaje(mensaje, usuarios))
+                b.pop()
                 ver_borradores(id, b, usuarios)
             case "2":
                 b.pop()
-                ver_borradores(id, b)
+                ver_borradores(id, b, usuarios)
             case "3":
                 pass
 
