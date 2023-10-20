@@ -42,7 +42,7 @@ while temp != None:
 print(
     "Acciones:\n\n\
     0 - Salir\n\
-    1 - Enviar Mensaje (FALTA)\n\
+    1 - Enviar Mensaje\n\
     2 - Ver Bandeja de Entrada\n\
     3 - Ver Mensajes Leídos\n\
     4 - Ver Borradores"
@@ -115,5 +115,3 @@ archivos.guardar_json("password.json", password)
 
 # mensajes.json
 archivos.guardar_json("mensajes.json", mensajes)
-
-
