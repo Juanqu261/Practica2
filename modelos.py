@@ -1,18 +1,34 @@
 """Contiene las clases Usuario y Mensaje"""
-import estructuras
+from estructuras import *
 
 class Usuario:
+    """
+    ## Attributes
+        - `cedula (str)`
+        - `nombre (str)`
+        - `fecha_nacimiento (str)`
+        - `ciudad (str)`
+        - `celular (str)`
+        - `email (str)`
+        - `direccion (str)`
+        - `contrasena (str)`
+        - `cargo (str)`
+        - `ba (DoubleList)`
+        - `ml (Queue)`
+        - `b (Stack)`
+    """
+
     def __init__(
         self,
-        cedula,
-        nombre,
-        fecha_nacimiento,
-        ciudad,
-        celular,
-        email,
-        direccion,
-        contrasena,
-        cargo,
+        cedula = None,
+        nombre = None,
+        fecha_nacimiento = None,
+        ciudad = None,
+        celular = None,
+        email = None,
+        direccion = None,
+        contrasena = None,
+        cargo = None,
     ):
         self.cedula = cedula
         self.nombre = nombre
@@ -23,10 +39,11 @@ class Usuario:
         self.direccion = direccion
         self.contrasena = contrasena
         self.cargo = cargo
-        self.ba = estructuras.DoubleList()
-        self.ml = estructuras.Queue()
-        self.b = estructuras.Stack()
+        self.ba = DoubleList()
+        self.ml = Queue()
+        self.b = Stack()
 
+    # GETTERS
     def get_cedula(self):
         return self.cedula
 
@@ -53,7 +70,17 @@ class Usuario:
 
     def get_cargo(self):
         return self.cargo
+    
+    def get_ba(self):
+        return self.ba
+    
+    def get_ml(self):
+        return self.ml
+    
+    def get_b(self):
+        return self.b
 
+    # SETTERS
     def set_cedula(self, e):
         self.cedula = e
 
@@ -80,18 +107,28 @@ class Usuario:
 
     def set_cargo(self, e):
         self.cargo = e
+    
+    def set_ba(self, ba: DoubleList):
+        self.ba = ba
+    
+    def set_ml(self, ml: Queue):
+        self.ml = ml
+
+    def set_b(self, b: Stack):
+        self.b = b
 
     def es_admin(self) -> bool:
         return True if self.cargo == "administrador" else False
 
-    def set_bandejas(self, entrada, leidos, borrador):
-        self.ba = entrada
-        self.ml = leidos
-        self.b = borrador
+    # def set_bandejas(self, entrada, leidos, borrador):
+    #     self.ba = entrada
+    #     self.ml = leidos
+    #     self.b = borrador
 
-    def get_bandejas(self):
-        return self.ba, self.ml, self.b
+    # def get_bandejas(self):
+    #     return self.ba, self.ml, self.b
 
+    # FORMATOS
     def __dict__(self):
         return {
             f"{self.cedula}": {
@@ -116,13 +153,13 @@ USUARIO\n\
 class Mensaje:
     def __init__(
         self,
-        destinatario=None,
-        tipo=None,
-        remitente=None,
-        fecha=None,
-        hora=None,
-        asunto=None,
-        cuerpo=None,
+        destinatario: Usuario,
+        tipo: str,
+        remitente: Usuario,
+        fecha: str,
+        hora: str,
+        asunto: str,
+        cuerpo: str,
     ):
         self.destinatario = destinatario
         self.tipo = tipo
@@ -158,7 +195,7 @@ class Mensaje:
     def set_destinatario(self, destinatario):
         self.destinatario = destinatario
 
-    def set_tipo(self, tipo="B"):
+    def set_tipo(self, tipo):
         self.tipo = tipo
 
     def set_remitente(self, remitente):
@@ -173,7 +210,7 @@ class Mensaje:
     def set_asunto(self, asunto):
         self.asunto = asunto
 
-    def set_cuerpo(self, cuerpo: str):
+    def set_cuerpo(self, cuerpo):
         self.cuerpo = cuerpo
 
     def __dict__(self):
@@ -185,9 +222,20 @@ class Mensaje:
             "asunto": self.asunto,
             "cuerpo": self.cuerpo,
         }
+    
+    def preview(self, indice: int):
+        """
+        Formato con información superficial del mensaje para mostrarlo
+        al consultar la Bandeja de Entrada.
+        """
+
+        return f"\
+            {self.fecha}  {self.hora}\n\
+    {'%02d'%indice}      Asunto: {self.asunto}\n\
+            {self.remitente.get_nombre()}"
 
     def __str__(self):
-        return f'\n    De: {self.remitente}\n\
+        return f'\n    De: {self.remitente.get_nombre()}\n\
     Enviado a las {self.hora} del {self.fecha}\n\n\
     Asunto: {self.asunto}\n\n\n\
     "{self.cuerpo}"\n'

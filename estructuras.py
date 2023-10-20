@@ -84,6 +84,15 @@ class List:
             self.size -= 1
 
             return temp.get_data()
+    
+    # DEBUGGING
+    def as_pylist(self):
+        new_list = []
+        temp = self.get_first()
+        while (temp != None):
+            new_list.append(temp.get_data().__str__())
+            temp = temp.get_next()
+        return new_list
 
 
 class DoubleNode:
@@ -221,17 +230,19 @@ class DoubleList:
             next.set_prev(new_node)
             self.size += 1
 
-    # EXTRAS
-    # def as_pylist(self):
-    #     new_list = []
-    #     temp = self.get_first()
-    #     while temp != None:
-    #         new_list.append(temp.get_data())
-    #         temp = temp.get_next()
-    #     return new_list
+    # DEBUGGING
+    def as_pylist(self):
+        new_list = []
+        temp = self.get_first()
+        while (temp != None):
+            new_list.append(temp.get_data().__str__())
+            temp = temp.get_next()
+        return new_list
 
 
 class Stack:
+    """\"Last in, First out\""""
+
     def __init__(self):
         self.data = List()
 
@@ -245,15 +256,21 @@ class Stack:
         self.data.add_first(e)
 
     def pop(self):
-        self.data.remove_first()
+        return self.data.remove_first()
 
     def top(self):
         if self.is_empty():
             return None
         return self.data.get_first().get_data()
 
+    # DEBUGGING
+    def as_pylist(self):
+        return self.data.as_pylist()
+
 
 class Queue:
+    """\"First in, First out\""""
+
     def __init__(self):
         self.data = List()
 
@@ -277,3 +294,7 @@ class Queue:
             return None
         else:
             return self.data.get_first().get_data()
+    
+    # DEBUGGING
+    def as_pylist(self):
+        return self.data.as_pylist()
